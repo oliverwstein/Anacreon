@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c02yb0rl5kj7y"]
+
+[ext_resource type="Shader" path="res://Overworld/smoother.gdshader" id="1_dntry"]
+
+[resource]
+shader = ExtResource("1_dntry")
+shader_parameter/tile_size = Vector2(16, 16)

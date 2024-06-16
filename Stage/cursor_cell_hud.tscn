@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://w2vswudpc26"]
+
+[ext_resource type="FontFile" uid="uid://cxwfwuol8kdr0" path="res://Assets/Fonts/Xolonium-Regular.ttf" id="1_olxdo"]
+[ext_resource type="Script" path="res://Stage/cursor_cell_hud.gd" id="1_u671j"]
+
+[node name="CursorCoordHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_u671j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+color = Color(1, 1, 1, 0.392157)
+
+[node name="SelectionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("1_olxdo")
+theme_override_font_sizes/font_size = 36
+text = "(0, 0)
+Terrain"
+horizontal_alignment = 1

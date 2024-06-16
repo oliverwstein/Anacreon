@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bsbyfvqv8d6e8"]
+
+[ext_resource type="Shader" path="res://Overworld/tree.gdshader" id="1_esnly"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1dyam"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o8lbw"]
+seamless = true
+noise = SubResource("FastNoiseLite_1dyam")
+
+[resource]
+shader = ExtResource("1_esnly")
+shader_parameter/color_noise_scale = 0.5
+shader_parameter/movement_noise_scale = 10.0
+shader_parameter/color_variation_intensity = 0.25
+shader_parameter/movement_intensity = 0.05
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_o8lbw")

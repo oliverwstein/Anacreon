@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv1ul1qynrdwd"]
+
+[ext_resource type="Script" path="res://Stage/Cursor.gd" id="1_g1etb"]
+[ext_resource type="Resource" uid="uid://cm7xcqpvxm7ak" path="res://Stage/Grid.tres" id="2_o8axn"]
+[ext_resource type="Texture2D" uid="uid://cehjxbgphhyae" path="res://UI/cursor_pack/PNG/Basic/Default/pointer_scifi_a.png" id="3_sor4e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uud0h"]
+atlas = ExtResource("3_sor4e")
+region = Rect2(0, 0, 47, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmrk0"]
+atlas = ExtResource("3_sor4e")
+region = Rect2(47, 0, 47, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgem0"]
+atlas = ExtResource("3_sor4e")
+region = Rect2(94, 0, 47, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qcek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uud0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmrk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgem0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_g1etb")
+grid = ExtResource("2_o8axn")
+ui_cooldown = 0.1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -16)
+rotation = 4.71239
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2qcek")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.170069
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

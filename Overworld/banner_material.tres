@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://by2ygf84hdnnb"]
+
+[ext_resource type="Shader" path="res://Overworld/banner.gdshader" id="1_dnff5"]
+
+[resource]
+shader = ExtResource("1_dnff5")
+shader_parameter/red_alpha = 0.9
+shader_parameter/target_color = Vector3(0.2235, 0.0784, 0.0627)
+shader_parameter/color_threshold = 0.2
+shader_parameter/base_color = Vector3(1, 0, 0)
+shader_parameter/noise_scale = 10.0
+shader_parameter/noise_intensity = 1.5
+shader_parameter/swirl_speed = 1.5
+shader_parameter/sheen_color = Vector3(0.8, 0.8, 0.8)
+shader_parameter/sheen_intensity = 0.1
+shader_parameter/saturation_boost = 3.0
+shader_parameter/compression_factor = 1.5
