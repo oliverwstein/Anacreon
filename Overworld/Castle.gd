@@ -2,6 +2,8 @@
 extends Node2D
 class_name Castle
 
+@onready var Arrow = preload("res://Overworld/Arrow.gd")
+
 # Setting neighbors
 @export var up: Castle
 @export var down: Castle
@@ -30,6 +32,25 @@ func update_color() -> void:
 		var sprite: Sprite2D = $Sprite2D as Sprite2D
 		if sprite:
 			sprite.modulate = color
+			
+func generate_arrows() -> void:
+	# Generate new arrows
+	if up: add_arrow(up)
+	if down: add_arrow(down)
+	if left: add_arrow(left)
+	if right: add_arrow(right)
+	
+func drop_arrows() -> void:
+	for arrow in arrows:
+		remove_child(arrow)
+	arrows.clear()
+
+func add_arrow(target_castle: Castle) -> void:
+	var arrow = Arrow.new()
+	arrow.start_castle = self
+	arrow.end_castle = target_castle
+	add_child(arrow)
+	arrows.append(arrow)
 
 func _ready():
 	update_color()
