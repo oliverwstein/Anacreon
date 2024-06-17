@@ -13,6 +13,9 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="Castle" type="Node2D" groups=["Castles"]]
 top_level = true
 script = ExtResource("1_qvwus")
+description = null
+country = null
+tile = Vector2(0, 0)
 faction = "neutral"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

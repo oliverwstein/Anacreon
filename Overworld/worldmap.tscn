@@ -930,37 +930,74 @@ tilemap = NodePath("../TileMap")
 selected_castle = NodePath("Chalphy")
 metadata/_edit_lock_ = true
 
+[node name="Belhalla" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(2744, 1752)
+up = NodePath("../Velthome")
+down = NodePath("../Dozel")
+left = NodePath("../Freege")
+right = NodePath("../Edda")
+description = "Belhalla is the capital city of the Kingdom of Grannvale, located in the heart of the continent of Jugdral. It is a magnificent and sprawling city, known for its grand architecture, rich history, and political importance.The city is home to the royal family of Grannvale, who reside in the impressive Belhalla Castle. This castle is not only a symbol of the kingdom's power and wealth but also serves as the center of government and diplomacy for the entire continent. The castle is surrounded by beautiful gardens, courtyards, and fountains, adding to the grandeur of the capital.Belhalla is also a hub of commerce and culture, attracting merchants, artisans, and scholars from all over Jugdral. The city boasts numerous markets, guilds, and academies, fostering a vibrant and diverse community. The Royal Academy of Belhalla is particularly renowned for its exceptional education in magic, history, and statecraft.As the seat of power in Grannvale, Belhalla is often the stage for significant political events and ceremonies, such as coronations, treaties, and diplomatic receptions. The city's importance extends beyond Grannvale, as the decisions made within its walls can have far-reaching consequences for all of Jugdral."
+country = "Grannvale"
+tile = Vector2i(171, 109)
+
 [node name="Chalphy" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(2600, 2312)
 up = NodePath("../Dozel")
 down = NodePath("../Miletos")
 left = NodePath("../Jungby")
 right = NodePath("../Edda")
-tile = Vector2(162, 144)
+description = "Chalphy is one of the six duchies of the Kingdom of Grannvale, located in the southwestern region of the continent of Jugdral. The duchy is known for its lush green landscapes, fertile farmlands, and temperate climate, making it an ideal place for agriculture and livestock farming.The people of Chalphy are known for their strong sense of justice, loyalty, and chivalry. The duchy is ruled by House Chalphy, a noble family descended from the crusader Baldur, who was one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Baldur's holy weapon, the legendary sword Tyrfing, is passed down through the generations of House Chalphy and is a symbol of their divine lineage and righteous rule.Chalphy is also renowned for its skilled knights and cavalry, who are among the finest in all of Grannvale. The duchy's military prowess and strategic location have made it an important ally to the Kingdom of Grannvale, and the rulers of Chalphy have often played pivotal roles in shaping the history of Jugdral."
+country = "Grannvale"
+tile = Vector2i(162, 144)
 faction = "blue"
 
-[node name="Nodion" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(1208, 2232)
-up = NodePath("../Mackily")
-down = NodePath("../Verdane")
-left = NodePath("../Heirhein")
-right = NodePath("../Evans")
-tile = Vector2(75, 139)
+[node name="Jungby" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(2168, 2520)
+down = NodePath("../Genoa")
+left = NodePath("../Evans")
+right = NodePath("../Chalphy")
+description = "Jungby is one of the six duchies of the Kingdom of Grannvale, situated in the southeastern region of the continent of Jugdral. The duchy is renowned for its picturesque coastal landscapes, thriving ports, and rich maritime culture.The people of Jungby are known for their skill in seafaring, fishing, and coastal trade. The duchy's strategic location along the eastern coast of Jugdral has made it an important center for commerce and naval activities. Jungby's ships are well-respected across the continent for their craftsmanship and seaworthiness.Jungby is ruled by House Yngvi, a noble family descended from the crusader Ulir, one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Ulir's holy weapon, the legendary bow Yewfelle, is passed down through the generations of House Yngvi and is a symbol of their divine lineage and mastery over archery.The duchy is also famous for its skilled archers, who are renowned throughout Grannvale for their precision and prowess in battle. Jungby's archers have played crucial roles in defending the kingdom and maintaining peace in the region."
+country = "Grannvale"
+tile = Vector2i(135, 157)
+faction = "ally"
 
-[node name="Heirhein" parent="CastleManager" node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(888, 1912)
-up = NodePath("../Anphony")
-down = NodePath("../Nodion")
-right = NodePath("../Mackily")
-tile = Vector2(55, 119)
+[node name="Freege" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(2200, 1720)
+down = NodePath("../Dozel")
+left = NodePath("../Augusty")
+right = NodePath("../Belhalla")
+description = "Freege is one of the six duchies of the Kingdom of Grannvale, located in the northeastern region of the continent of Jugdral. The duchy is known for its rugged, mountainous terrain, rich mineral deposits, and advanced magical technology.The people of Freege are renowned for their exceptional magical abilities and their mastery over thunder magic. The duchy is home to some of the most prestigious magic academies in Jugdral, attracting students and scholars from all over the continent. Freege's mages and sages are highly sought after for their knowledge and skills in both magical research and warfare.Freege is ruled by House Freege, a noble family descended from the crusader Tordo, one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Tordo's holy weapon, the legendary tome Mjölnir, is passed down through the generations of House Freege and is a symbol of their divine lineage and mastery over thunder magic.The duchy is also known for its innovative magical technology, such as the powerful Thunder Rods, which harness the power of thunder magic for various purposes, including defense and industry. Freege's technological advancements have made it a formidable force within Grannvale and have contributed significantly to the kingdom's military strength."
+country = "Grannvale"
+tile = Vector2i(137, 107)
 
-[node name="Mackily" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(1496, 1880)
-up = NodePath("../Augusty")
-down = NodePath("../Nodion")
-left = NodePath("../Heirhein")
-right = NodePath("../Augusty")
-tile = Vector2(93, 117)
+[node name="Dozel" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(2568, 1944)
+up = NodePath("../Belhalla")
+down = NodePath("../Chalphy")
+left = NodePath("../Freege")
+right = NodePath("../Edda")
+description = "Dozel is one of the six duchies of the Kingdom of Grannvale, situated in the northwestern region of the continent of Jugdral. The duchy is characterized by its vast, dense forests, rugged hills, and hardy people.The people of Dozel are known for their incredible strength, endurance, and prowess in battle. The duchy produces some of the finest warriors and armored knights in all of Grannvale, and their might is respected and feared throughout Jugdral. Dozel's soldiers are particularly skilled in heavy armor combat and are known for their unwavering loyalty to their lords.Dozel is ruled by House Dozel, a noble family descended from the crusader Neir, one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Neir's holy weapon, the legendary axe Helswath, is passed down through the generations of House Dozel and is a symbol of their divine lineage and unparalleled strength in battle.The duchy's dense forests and rugged terrain have also made it a haven for wild game, making hunting a popular pastime and a significant part of Dozel's culture. The people of Dozel are also known for their strong sense of honor, pride, and tradition, valuing strength and courage above all else."
+country = "Grannvale"
+tile = Vector2i(160, 121)
+
+[node name="Velthome" parent="CastleManager" node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(3048, 1464)
+up = NodePath("../Phinora")
+down = NodePath("../Belhalla")
+right = NodePath("../Phinora")
+description = "Velthomer is one of the six duchies of the Kingdom of Grannvale, located in the southeastern region of the continent of Jugdral. The duchy is renowned for its arid, volcanic landscape, rich mineral deposits, and powerful fire magic.The people of Velthomer are known for their fiery temperament, passion, and mastery over fire magic. The duchy is home to the famous Velthomer Mage Academy, which is considered one of the most prestigious institutions for the study of fire magic in all of Jugdral. Velthomer's mages and sages are highly respected for their knowledge and skill in wielding the destructive power of fire.Velthomer is ruled by House Velthomer, a noble family descended from the crusader Fala, one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Fala's holy weapon, the legendary tome Valflame, is passed down through the generations of House Velthomer and is a symbol of their divine lineage and mastery over fire magic.The duchy's volcanic landscape has also shaped its economy, with mining and blacksmithing being important industries. Velthomer's master blacksmiths are renowned for their exceptional skill in crafting weapons and armor, often incorporating fire magic into their creations."
+country = "Grannvale"
+tile = Vector2i(190, 91)
+
+[node name="Edda" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(3032, 2088)
+up = NodePath("../Belhalla")
+down = NodePath("../Chalphy")
+left = NodePath("../Dozel")
+right = NodePath("../Melgen")
+description = "Edda is one of the six duchies of the Kingdom of Grannvale, located in the central region of the continent of Jugdral. Unlike the other duchies, Edda is known for its strong religious influence and its close ties to the Church of Grannvale.The duchy is home to the renowned Edda Temple, which serves as the spiritual heart of Grannvale and is the seat of the Archbishop of the Church. The temple is a magnificent structure, known for its grand architecture, beautiful gardens, and serene atmosphere. It is a place of pilgrimage for the faithful from all over Jugdral, who come to seek guidance, healing, and spiritual enlightenment.The people of Edda are known for their deep faith, compassion, and wisdom. Many of Grannvale's most respected clerics, priests, and bishops hail from Edda, and the duchy is renowned for its exceptional healers and practitioners of light magic.Edda is ruled by House Edda, a noble family that has close ties to the Church and is known for its piety and devotion. The rulers of Edda often serve as trusted advisors to the King of Grannvale and play a significant role in shaping the spiritual and moral guidance of the kingdom."
+country = "Grannvale"
+tile = Vector2i(189, 130)
 
 [node name="Augusty" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(1656, 1496)
@@ -968,14 +1005,47 @@ up = NodePath("../Madino")
 down = NodePath("../Mackily")
 left = NodePath("../Silvali")
 right = NodePath("../Freege")
-tile = Vector2(103, 93)
+description = "The capital of the dominion of Augusty, steeped in history and tradition, was founded by the legendary Crusader Hoðr. The kingdom is composed of a network of noble houses, each sworn to serve the royal family. However, a unique aspect of Agustria's power structure is that Hoðr's Holy Blood does not flow through the veins of the royal family, but instead through the members of House Nordion. This distinctive arrangement adds an intriguing layer of complexity to the political landscape of Agustria.House Nordion, bearers of Hoðr's Holy Blood, holds a special place within the kingdom. They are renowned for their elite force of Cross Knights, who serve under the banner of Nordion but pledge their ultimate loyalty to the king. This balance of power and allegiance has been a defining feature of Agustria's military and political structure, ensuring a level of checks and balances between the noble houses and the royal family.Throughout Agustria's history, several notable figures have emerged, leaving their mark on the kingdom's tapestry. King Chagall, a controversial ruler, has navigated the complex web of noble alliances and rivalries during his reign. Eldigan, a prominent member of House Nordion and a skilled warrior, has earned respect and admiration for his unwavering loyalty and sense of honor. His sister, Lachesis, is known for her beauty, grace, and devotion to her family and kingdom. "
+country = "Augusty"
+tile = Vector2i(103, 93)
+
+[node name="Nodion" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(1208, 2232)
+up = NodePath("../Mackily")
+down = NodePath("../Verdane")
+left = NodePath("../Heirhein")
+right = NodePath("../Evans")
+description = "Nordion, also known as Nodion, is a duchy within the Kingdom of Agustria, and the seat of power for House Nordion. The duchy is located in the northern part of Agustria, known for its lush forests, rolling hills, and rich agricultural lands. The people of Nordion are known for their strong sense of honor, loyalty, and pride in their heritage, reflecting the values embodied by their ruling house.House Nordion, led by the descendants of the Crusader Hoðr, is one of the most respected and influential noble families in Agustria. The family is renowned for its exceptional warriors, particularly the elite Cross Knights, who serve as both the personal guard of House Nordion and as a symbol of the house's military prowess. The Cross Knights are admired throughout the kingdom for their skill, discipline, and unwavering allegiance to their lords and the king.The castle of Nordion stands as a testament to the house's strength and resilience. Its sturdy walls and towers have withstood countless battles and sieges, protecting the Nordion family and their subjects from threats both within and without the kingdom. Within the castle, the halls are adorned with tapestries and paintings depicting the heroic deeds of Nordion's ancestors, serving as a constant reminder of the family's proud lineage and the weight of their responsibilities. Despite the martial focus of House Nordion, the duchy is also known for its vibrant culture, with bards and poets often visiting the castle to entertain the nobility with tales of heroism and chivalry."
+country = "Augusty"
+tile = Vector2i(75, 139)
+
+[node name="Heirhein" parent="CastleManager" node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(888, 1912)
+up = NodePath("../Anphony")
+down = NodePath("../Nodion")
+right = NodePath("../Mackily")
+description = ""
+country = "Augusty"
+tile = Vector2i(55, 119)
+
+[node name="Mackily" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(1496, 1880)
+up = NodePath("../Augusty")
+down = NodePath("../Nodion")
+left = NodePath("../Heirhein")
+right = NodePath("../Augusty")
+description = ""
+country = "Augusty"
+tile = Vector2i(93, 117)
 
 [node name="Anphony" parent="CastleManager" node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(1000, 1464)
 up = NodePath("../Silvali")
 down = NodePath("../Heirhein")
 right = NodePath("../Augusty")
-tile = Vector2(62, 91)
+description = ""
+country = "Augusty"
+tile = Vector2i(62, 91)
 
 [node name="Silvali" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(1192, 1240)
@@ -983,7 +1053,9 @@ up = NodePath("../Madino")
 down = NodePath("../Anphony")
 left = NodePath("../Anphony")
 right = NodePath("../Augusty")
-tile = Vector2(74, 77)
+description = ""
+country = "Augusty"
+tile = Vector2i(74, 77)
 
 [node name="Madino" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(1736, 1032)
@@ -991,13 +1063,27 @@ up = NodePath("../Orgahill")
 down = NodePath("../Augusty")
 left = NodePath("../Silvali")
 right = NodePath("../Sailane")
-tile = Vector2(108, 64)
+description = ""
+country = "Augusty"
+tile = Vector2i(108, 64)
 
 [node name="Orgahill" parent="CastleManager" node_paths=PackedStringArray("down", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(1912, 616)
 down = NodePath("../Madino")
 right = NodePath("../Sailane")
-tile = Vector2(119, 38)
+description = ""
+country = ""
+tile = Vector2i(119, 38)
+
+[node name="Miletos" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(2504, 2664)
+up = NodePath("../Chalphy")
+down = NodePath("../Rado")
+left = NodePath("../Genoa")
+right = NodePath("../Chronos")
+description = ""
+country = "Miletos"
+tile = Vector2i(156, 166)
 
 [node name="Peruluke" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(3256, 2776)
@@ -1005,45 +1091,132 @@ up = NodePath("../Edda")
 down = NodePath("../Chronos")
 left = NodePath("../Miletos")
 right = NodePath("../Melgen")
-tile = Vector2(203, 173)
+description = ""
+country = "Miletos"
+tile = Vector2i(203, 173)
 
-[node name="Darna" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(3960, 1528)
-up = NodePath("../Yied")
-down = NodePath("../Melgen")
+[node name="Rado" parent="CastleManager" node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(2440, 3144)
+up = NodePath("../Miletos")
+left = NodePath("../Genoa")
+right = NodePath("../Chronos")
+description = ""
+country = "Miletos"
+tile = Vector2i(152, 196)
+
+[node name="Chronos" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(2936, 3016)
+down = NodePath("../Rado")
+left = NodePath("../Miletos")
+right = NodePath("../Peruluke")
+description = ""
+country = "Miletos"
+tile = Vector2i(183, 188)
+
+[node name="Manster" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(5208, 1928)
+up = NodePath("../Conote")
+down = NodePath("../Meath")
+left = NodePath("../Alster")
+right = NodePath("../Conote")
+description = ""
+country = "Munster"
+tile = Vector2i(325, 120)
+
+[node name="Melgen" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(3992, 2088)
+up = NodePath("../Darna")
+down = NodePath("../Peruluke")
+left = NodePath("../Edda")
+right = NodePath("../Alster")
+description = ""
+country = "Munster"
+tile = Vector2i(249, 130)
+
+[node name="Alster" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(4552, 2056)
+up = NodePath("../Lenster")
+down = NodePath("../Luthecia")
+left = NodePath("../Melgen")
+right = NodePath("../Manster")
+description = ""
+country = "Munster"
+tile = Vector2i(284, 128)
+
+[node name="Lenster" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(4632, 1576)
+down = NodePath("../Alster")
+left = NodePath("../Melgen")
+right = NodePath("../Conote")
+description = ""
+country = "Munster"
+tile = Vector2i(289, 98)
+
+[node name="Conote" parent="CastleManager" node_paths=PackedStringArray("down", "left") instance=ExtResource("4_7ktun")]
+position = Vector2(5288, 1608)
+down = NodePath("../Manster")
+left = NodePath("../Lenster")
+description = ""
+country = "Munster"
+tile = Vector2i(330, 100)
+
+[node name="Meath" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(5080, 2392)
+up = NodePath("../Manster")
+down = NodePath("../Kapathogia")
+left = NodePath("../Alster")
+right = NodePath("../Manster")
+description = ""
+country = "Munster"
+tile = Vector2i(317, 149)
+
+[node name="Thracia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left") instance=ExtResource("4_7ktun")]
+position = Vector2(5080, 3016)
+up = NodePath("../Kapathogia")
+down = NodePath("../Grutia")
+left = NodePath("../Grutia")
+description = ""
+country = "Thracia"
+tile = Vector2i(317, 188)
+
+[node name="Luthecia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(4408, 2792)
+up = NodePath("../Melgen")
+down = NodePath("../Grutia")
+left = NodePath("../Melgen")
+right = NodePath("../Kapathogia")
+description = ""
+country = "Thracia"
+tile = Vector2i(275, 174)
+
+[node name="Grutia" parent="CastleManager" node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(4536, 3224)
+up = NodePath("../Luthecia")
+left = NodePath("../Luthecia")
+right = NodePath("../Thracia")
+description = ""
+country = "Thracia"
+tile = Vector2i(283, 201)
+
+[node name="Kapathogia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(4760, 2632)
+up = NodePath("../Meath")
+down = NodePath("../Luthecia")
+left = NodePath("../Luthecia")
+right = NodePath("../Thracia")
+description = ""
+country = "Thracia"
+tile = Vector2i(297, 164)
+
+[node name="Yied" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(4040, 1224)
+up = NodePath("../Lubeck")
+down = NodePath("../Darna")
 left = NodePath("../Phinora")
 right = NodePath("../Rivough")
-tile = Vector2(247, 95)
-
-[node name="Edda" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(3032, 2088)
-up = NodePath("../Barhara")
-down = NodePath("../Chalphy")
-left = NodePath("../Dozel")
-right = NodePath("../Melgen")
-tile = Vector2(189, 130)
-
-[node name="Barhara" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(2744, 1752)
-up = NodePath("../Velthome")
-down = NodePath("../Dozel")
-left = NodePath("../Freege")
-right = NodePath("../Edda")
-tile = Vector2(171, 109)
-
-[node name="Freege" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(2200, 1720)
-down = NodePath("../Dozel")
-left = NodePath("../Augusty")
-right = NodePath("../Barhara")
-tile = Vector2(137, 107)
-
-[node name="Velthome" parent="CastleManager" node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(3048, 1464)
-up = NodePath("../Phinora")
-down = NodePath("../Barhara")
-right = NodePath("../Phinora")
-tile = Vector2(190, 91)
+description = ""
+country = "Yied"
+tile = Vector2i(252, 76)
 
 [node name="Phinora" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(3368, 1224)
@@ -1051,23 +1224,19 @@ up = NodePath("../Lubeck")
 down = NodePath("../Velthome")
 left = NodePath("../Zaxon")
 right = NodePath("../Yied")
-tile = Vector2(210, 76)
+description = ""
+country = "Yied"
+tile = Vector2i(210, 76)
 
-[node name="Lubeck" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") groups=["Silesia"] instance=ExtResource("4_7ktun")]
-position = Vector2(3576, 936)
-up = NodePath("../Tirnanog")
-down = NodePath("../Phinora")
-left = NodePath("../Zaxon")
-right = NodePath("../Yied")
-tile = Vector2(223, 58)
-
-[node name="Zaxon" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") groups=["Silesia"] instance=ExtResource("4_7ktun")]
-position = Vector2(3048, 1016)
-up = NodePath("../Throve")
-down = NodePath("../Phinora")
-left = NodePath("../Silesia")
-right = NodePath("../Lubeck")
-tile = Vector2(190, 63)
+[node name="Darna" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(3960, 1528)
+up = NodePath("../Yied")
+down = NodePath("../Melgen")
+left = NodePath("../Phinora")
+right = NodePath("../Rivough")
+description = ""
+country = "Yied"
+tile = Vector2i(247, 95)
 
 [node name="Silesia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") groups=["Silesia"] instance=ExtResource("4_7ktun")]
 position = Vector2(2552, 1256)
@@ -1075,7 +1244,29 @@ up = NodePath("../Sailane")
 down = NodePath("../Phinora")
 left = NodePath("../Sailane")
 right = NodePath("../Zaxon")
-tile = Vector2(159, 78)
+description = ""
+country = "Silesia"
+tile = Vector2i(159, 78)
+
+[node name="Lubeck" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") groups=["Silesia"] instance=ExtResource("4_7ktun")]
+position = Vector2(3576, 936)
+up = NodePath("../Tirnanog")
+down = NodePath("../Phinora")
+left = NodePath("../Zaxon")
+right = NodePath("../Yied")
+description = ""
+country = "Silesia"
+tile = Vector2i(223, 58)
+
+[node name="Zaxon" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") groups=["Silesia"] instance=ExtResource("4_7ktun")]
+position = Vector2(3048, 1016)
+up = NodePath("../Throve")
+down = NodePath("../Phinora")
+left = NodePath("../Silesia")
+right = NodePath("../Lubeck")
+description = ""
+country = "Silesia"
+tile = Vector2i(190, 63)
 
 [node name="Sailane" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") groups=["Silesia"] instance=ExtResource("4_7ktun")]
 position = Vector2(2184, 920)
@@ -1083,30 +1274,27 @@ up = NodePath("../Throve")
 down = NodePath("../Silesia")
 left = NodePath("../Madino")
 right = NodePath("../Throve")
-tile = Vector2(136, 57)
+description = ""
+country = "Silesia"
+tile = Vector2i(136, 57)
 
 [node name="Throve" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") groups=["Silesia"] instance=ExtResource("4_7ktun")]
 position = Vector2(3048, 408)
 down = NodePath("../Zaxon")
 left = NodePath("../Sailane")
 right = NodePath("../Lubeck")
-tile = Vector2(190, 25)
+description = ""
+country = "Silesia"
+tile = Vector2i(190, 25)
 
-[node name="Dozel" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(2568, 1944)
-up = NodePath("../Barhara")
-down = NodePath("../Chalphy")
-left = NodePath("../Freege")
-right = NodePath("../Edda")
-tile = Vector2(160, 121)
-
-[node name="Jungby" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(2168, 2520)
-down = NodePath("../Genoa")
-left = NodePath("../Evans")
-right = NodePath("../Chalphy")
-tile = Vector2(135, 157)
-faction = "ally"
+[node name="Verdane" parent="CastleManager" node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(1128, 2568)
+up = NodePath("../Nodion")
+down = NodePath("../Marpha")
+right = NodePath("../Evans")
+description = ""
+country = "Verdane"
+tile = Vector2i(70, 160)
 
 [node name="Evans" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(1720, 2360)
@@ -1114,7 +1302,9 @@ up = NodePath("../Nodion")
 down = NodePath("../Genoa")
 left = NodePath("../Verdane")
 right = NodePath("../Jungby")
-tile = Vector2(107, 147)
+description = ""
+country = "Verdane"
+tile = Vector2i(107, 147)
 faction = "red"
 
 [node name="Genoa" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
@@ -1123,133 +1313,18 @@ up = NodePath("../Jungby")
 down = NodePath("../Marpha")
 left = NodePath("../Evans")
 right = NodePath("../Miletos")
-tile = Vector2(118, 176)
-
-[node name="Verdane" parent="CastleManager" node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(1128, 2568)
-up = NodePath("../Nodion")
-down = NodePath("../Marpha")
-right = NodePath("../Evans")
-tile = Vector2(70, 160)
+description = ""
+country = "Verdane"
+tile = Vector2i(118, 176)
 
 [node name="Marpha" parent="CastleManager" node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(1368, 2968)
 up = NodePath("../Evans")
 left = NodePath("../Verdane")
 right = NodePath("../Genoa")
-tile = Vector2(85, 185)
-
-[node name="Miletos" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(2504, 2664)
-up = NodePath("../Chalphy")
-down = NodePath("../Rado")
-left = NodePath("../Genoa")
-right = NodePath("../Chronos")
-tile = Vector2(156, 166)
-
-[node name="Rado" parent="CastleManager" node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(2440, 3144)
-up = NodePath("../Miletos")
-left = NodePath("../Genoa")
-right = NodePath("../Chronos")
-tile = Vector2(152, 196)
-
-[node name="Chronos" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(2936, 3016)
-down = NodePath("../Rado")
-left = NodePath("../Miletos")
-right = NodePath("../Peruluke")
-tile = Vector2(183, 188)
-
-[node name="Melgen" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(3992, 2088)
-up = NodePath("../Darna")
-down = NodePath("../Peruluke")
-left = NodePath("../Edda")
-right = NodePath("../Alster")
-tile = Vector2(249, 130)
-
-[node name="Luthecia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(4408, 2792)
-up = NodePath("../Melgen")
-down = NodePath("../Grutia")
-left = NodePath("../Melgen")
-right = NodePath("../Kapathogia")
-tile = Vector2(275, 174)
-
-[node name="Grutia" parent="CastleManager" node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(4536, 3224)
-up = NodePath("../Luthecia")
-left = NodePath("../Luthecia")
-right = NodePath("../Thracia")
-tile = Vector2(283, 201)
-
-[node name="Thracia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left") instance=ExtResource("4_7ktun")]
-position = Vector2(5080, 3016)
-up = NodePath("../Kapathogia")
-down = NodePath("../Grutia")
-left = NodePath("../Grutia")
-tile = Vector2(317, 188)
-
-[node name="Kapathogia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(4760, 2632)
-up = NodePath("../Meace")
-down = NodePath("../Luthecia")
-left = NodePath("../Luthecia")
-right = NodePath("../Thracia")
-tile = Vector2(297, 164)
-
-[node name="Alster" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(4552, 2056)
-up = NodePath("../Lenster")
-down = NodePath("../Luthecia")
-left = NodePath("../Melgen")
-right = NodePath("../Manster")
-tile = Vector2(284, 128)
-
-[node name="Meace" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(5080, 2392)
-up = NodePath("../Manster")
-down = NodePath("../Kapathogia")
-left = NodePath("../Alster")
-right = NodePath("../Manster")
-tile = Vector2(317, 149)
-
-[node name="Manster" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(5208, 1928)
-up = NodePath("../Conote")
-down = NodePath("../Meace")
-left = NodePath("../Alster")
-right = NodePath("../Conote")
-tile = Vector2(325, 120)
-
-[node name="Lenster" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(4632, 1576)
-down = NodePath("../Alster")
-left = NodePath("../Melgen")
-right = NodePath("../Conote")
-tile = Vector2(289, 98)
-
-[node name="Conote" parent="CastleManager" node_paths=PackedStringArray("down", "left") instance=ExtResource("4_7ktun")]
-position = Vector2(5288, 1608)
-down = NodePath("../Manster")
-left = NodePath("../Lenster")
-tile = Vector2(330, 100)
-
-[node name="Yied" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(4040, 1224)
-up = NodePath("../Lubeck")
-down = NodePath("../Darna")
-left = NodePath("../Phinora")
-right = NodePath("../Rivough")
-tile = Vector2(252, 76)
-
-[node name="Rivough" parent="CastleManager" node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_7ktun")]
-position = Vector2(4648, 1192)
-up = NodePath("../Sophara")
-left = NodePath("../Yied")
-right = NodePath("../Isaach")
-tile = Vector2(290, 74)
+description = ""
+country = "Verdane"
+tile = Vector2i(85, 185)
 
 [node name="Isaach" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(5080, 1064)
@@ -1257,7 +1332,18 @@ up = NodePath("../Ganeishire")
 down = NodePath("../Rivough")
 left = NodePath("../Sophara")
 right = NodePath("../Ganeishire")
-tile = Vector2(317, 66)
+description = ""
+country = "Isaach"
+tile = Vector2i(317, 66)
+
+[node name="Rivough" parent="CastleManager" node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_7ktun")]
+position = Vector2(4648, 1192)
+up = NodePath("../Sophara")
+left = NodePath("../Yied")
+right = NodePath("../Isaach")
+description = ""
+country = "Isaach"
+tile = Vector2i(290, 74)
 
 [node name="Sophara" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(4568, 792)
@@ -1265,21 +1351,27 @@ up = NodePath("../Ganeishire")
 down = NodePath("../Rivough")
 left = NodePath("../Tirnanog")
 right = NodePath("../Isaach")
-tile = Vector2(285, 49)
+description = ""
+country = "Isaach"
+tile = Vector2i(285, 49)
 
 [node name="Tirnanog" parent="CastleManager" node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(4312, 296)
 down = NodePath("../Sophara")
 left = NodePath("../Lubeck")
 right = NodePath("../Ganeishire")
-tile = Vector2(269, 18)
+description = ""
+country = "Isaach"
+tile = Vector2i(269, 18)
 
 [node name="Ganeishire" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left") instance=ExtResource("4_7ktun")]
 position = Vector2(5128, 472)
 up = NodePath("../Tirnanog")
 down = NodePath("../Isaach")
 left = NodePath("../Sophara")
-tile = Vector2(320, 29)
+description = ""
+country = "Isaach"
+tile = Vector2i(320, 29)
 
 [node name="Cursor" type="Node2D" parent="."]
 top_level = true

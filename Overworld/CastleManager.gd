@@ -31,7 +31,7 @@ func _ready():
 	selected_castle = selected_castle
 		
 func open_castle(castle: Castle = selected_castle):
-	print(castle.name)
+	print(castle.name, ", ", castle.country, ", ", castle.description)
 	
 
 func _on_zoom_changed(new_zoom):

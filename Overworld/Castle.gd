@@ -9,7 +9,9 @@ class_name Castle
 @export var down: Castle
 @export var left: Castle
 @export var right: Castle
-@export var tile: Vector2 = Vector2() :
+@export var description: String = ""
+@export var country: String = ""
+@export var tile: Vector2i = Vector2i() :
 	get:
 		return tile
 	set(value):
