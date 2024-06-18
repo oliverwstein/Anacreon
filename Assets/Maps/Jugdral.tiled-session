@@ -20,6 +20,7 @@
             }
         },
         "/Users/Alex/Development/Anacreon/Preprocessing/JugdralTileset.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
