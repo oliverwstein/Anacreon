@@ -50,6 +50,7 @@ func process_tileset(tileset: TileSet):
 	print("process_tileset, ", tileset)
 	var atlas = tileset.get_source_count()  # Get all tile IDs
 	print("atlas, ", atlas)
+	#tileset.add_physics_layer()
 	var tile_source = tileset.get_source(0) as TileSetAtlasSource
 	print(tile_source)
 	print("tile_count, ", tile_source.get_tiles_count())
@@ -62,17 +63,28 @@ func process_tileset(tileset: TileSet):
 	for id in range(0, tile_source.get_tiles_count()):
 		var tile_id_vec = tile_source.get_tile_id(id)
 		var texture_region = tile_source.get_tile_texture_region(tile_id_vec)
-		var category = _process_tile(image.get_region(texture_region), reference_dists)
+		var tile_image = image.get_region(texture_region)
+		var category = _process_tile(tile_image, reference_dists)
 		#print(tile_id_vec, category)
 		tile_source.get_tile_data(tile_id_vec, 0).set_custom_data("tileType", category[0])
+		var frequency_matrix = find_pixel_frequencies(tile_image, reference_dists[category[0]])
+		var inclusion_matrix = initialize_inclusion_matrix(frequency_matrix)
+		prune_negative_values(frequency_matrix, inclusion_matrix)
+		var hull = find_largest_convex_hull_from_components(inclusion_matrix)
+		if hull != null:
+			tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, 1)
+			tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, 0, adjust_contour_points(hull))
+			
+		#var polygon = adjust_contour_points(pavlidis_contour_tracing(inclusion_matrix))
+		#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, 1)
+		#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, 0, polygon)
+		
 	
-	print("Tileset processed!")
-	print(tile_source.get_tile_data(Vector2i(0,0), 0).get_custom_data("tileType"))
 	return tileset
 
 func _process_tile(tileImage: Image, reference_dists: Dictionary):
 	var colorDist = get_color_distribution(tileImage)
-	var best_match_value = INF
+	var best_match_value = INF#6
 	var best_match = ""
 	for ref in reference_dists.keys():
 		var emd = calculate_emd(colorDist, reference_dists[ref])
@@ -96,8 +108,9 @@ func get_color_distribution(image: Image):
 				color_distribution[color] += 1
 			else:
 				color_distribution[color] = 1
-
-	return color_distribution
+	var total = sum(color_distribution.values())
+	var normed_distribution = normalize_distribution(color_distribution, total)
+	return normed_distribution
 
 static func sum(array):
 	var sum = 0.0
@@ -116,6 +129,7 @@ static func get_unique_elements(arr):
 			unique_list.append(element)
 
 	return unique_list
+	
 # Calculates the Earth Mover's Distance (EMD) between two distributions
 func calculate_emd(distribution1, distribution2):
 	var keys1 = distribution1.keys()
@@ -154,3 +168,126 @@ func calculate_cdf(norm_distribution, all_keys):
 		cumulative += norm_distribution.get(key, 0)  # Use 0 if the key is not present
 		cdf.append(cumulative)
 	return cdf
+
+func find_pixel_frequencies(image: Image, reference_distribution: Dictionary) -> Array:
+	var width = image.get_width()
+	var height = image.get_height()
+	var frequency_matrix = Array()
+
+	# Initialize the frequency matrix with default value -0.1
+	for y in range(height):
+		var row = []
+		for x in range(width):
+			row.append(-0.1)  # Default value for unmatched pixels
+		frequency_matrix.append(row)
+
+	# Populate the frequency matrix with values from the reference distribution
+	for x in range(width):
+		for y in range(height):
+			var pixel_color = image.get_pixel(x, y).to_rgba32()
+			if reference_distribution.has(pixel_color):
+				frequency_matrix[y][x] = reference_distribution[pixel_color]
+			else:
+				frequency_matrix[y][x] = -0.1  # This line is optional since it's already initialized
+
+	return frequency_matrix
+	
+func initialize_inclusion_matrix(frequency_matrix):
+	var inclusion_matrix = []
+	for i in range(frequency_matrix.size()):
+		var row = []
+		for j in range(frequency_matrix[i].size()):
+			row.append(1)  # Start with all points included
+		inclusion_matrix.append(row)
+	return inclusion_matrix
+
+func prune_negative_values(frequency_matrix, inclusion_matrix):
+	var changes = true
+	while changes:
+		changes = false
+		for i in range(frequency_matrix.size()):
+			for j in range(frequency_matrix[i].size()):
+				if inclusion_matrix[i][j] == 1 and frequency_matrix[i][j] < 0:
+					# Check if setting this point to 0 increases the total value
+					if can_remove_point(frequency_matrix, inclusion_matrix, i, j):
+						inclusion_matrix[i][j] = 0
+						changes = true
+
+func can_remove_point(frequency_matrix, inclusion_matrix, i, j):
+	# Additional checks can be added here to decide if removing a point is beneficial
+	return true  # Simplistic approach for now
+	
+func get_points_from_matrix(inclusion_matrix):
+	var points = PackedVector2Array()
+	for y in range(inclusion_matrix.size()):
+		for x in range(inclusion_matrix[y].size()):
+			if inclusion_matrix[y][x] == 1:
+				points.append(Vector2(x, y))
+	return points
+	
+func find_largest_convex_hull(inclusion_matrix):
+	var points = get_points_from_matrix(inclusion_matrix)
+	var hull = Geometry2D.convex_hull(points)
+	# Optionally, find convex hulls for all components if you have multiple disconnected components
+	# This would require segmenting the points by connectedness first, which is not covered here
+	return hull
+	
+func calculate_hull_area(hull: PackedVector2Array) -> float:
+	var area = 0.0
+	var n = hull.size()
+	for i in range(n):
+		var j = (i + 1) % n  # Wrap around to the first vertex
+		area += hull[i].x * hull[j].y - hull[j].x * hull[i].y
+	return abs(area) / 2.0
+	
+func find_largest_convex_hull_from_components(inclusion_matrix):
+	var points = get_points_from_matrix(inclusion_matrix)
+	var largest_hull = null
+	var max_area = -1.0
+	
+	# Assuming components were separated (if you handle multiple disconnected parts)
+	# var components = segment_into_components(points) # This needs implementation if needed
+	# for component in components:
+	#     var hull = Geometry.convex_hull(component)
+	#     var area = calculate_hull_area(hull)
+	#     if area > max_area:
+	#         max_area = area
+	#         largest_hull = hull
+	
+	# For single component scenario:
+	var hull = Geometry2D.convex_hull(points)
+	var area = calculate_hull_area(hull)
+	if area > max_area:
+		max_area = area
+		largest_hull = hull
+	
+	return largest_hull
+#
+func calculate_offsets(contour):
+	var min_x = float('inf')
+	var max_x = float('-inf')
+	var min_y = float('inf')
+	var max_y = float('-inf')
+	
+	for point in contour:
+		min_x = min(min_x, point.x)
+		max_x = max(max_x, point.x)
+		min_y = min(min_y, point.y)
+		max_y = max(max_y, point.y)
+	
+	var width = max_x - min_x
+	var height = max_y - min_y
+	
+	return Vector2(width / 2 + min_x, height / 2 + min_y)  # Return the offsets for x and y
+	
+func adjust_contour_points(contour):
+	var offsets = calculate_offsets(contour)
+	var offset_x = offsets[0]
+	var offset_y = offsets[1]
+	
+	var adjusted_contour = PackedVector2Array()
+	for point in contour:
+		var adjusted_point = Vector2(point.x - offset_x, point.y - offset_y)
+		adjusted_contour.append(adjusted_point)
+	
+	return adjusted_contour
