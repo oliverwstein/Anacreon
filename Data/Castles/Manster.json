@@ -1,0 +1,16 @@
+{
+  "country": "Munster",
+  "description": "",
+  "faction": "neutral",
+  "name": "Manster",
+  "neighbors": {
+    "down": "Meath",
+    "left": "Alster",
+    "right": "Conote",
+    "up": "Conote"
+  },
+  "tile": {
+    "x": 325,
+    "y": 120
+  }
+}

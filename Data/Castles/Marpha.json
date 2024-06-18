@@ -1,0 +1,16 @@
+{
+  "country": "Verdane",
+  "description": "",
+  "faction": "neutral",
+  "name": "Marpha",
+  "neighbors": {
+    "down": "",
+    "left": "Verdane",
+    "right": "Genoa",
+    "up": "Evans"
+  },
+  "tile": {
+    "x": 85,
+    "y": 185
+  }
+}

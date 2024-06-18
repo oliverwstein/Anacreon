@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsxgf6vaasmk7"]
+
+[ext_resource type="Script" path="res://Overworld/castle_page.gd" id="1_412rj"]
+[ext_resource type="FontFile" uid="uid://cxwfwuol8kdr0" path="res://Assets/Fonts/Xolonium-Regular.ttf" id="1_kf6yj"]
+[ext_resource type="Theme" uid="uid://fedyrlr0tala" path="res://standard_font.tres" id="2_3628d"]
+[ext_resource type="Script" path="res://Overworld/CastleDescription.gd" id="4_vr0da"]
+[ext_resource type="Texture2D" uid="uid://c5jkulpr5s6y2" path="res://UI/cursor_pack/PNG/Basic/Default/drawing_pen.png" id="5_1dp83"]
+
+[node name="CastlePage" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+script = ExtResource("1_412rj")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 600.0
+grow_horizontal = 2
+
+[node name="Atlas" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+theme = ExtResource("2_3628d")
+
+[node name="Label" type="Label" parent="TabContainer/Atlas"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kf6yj")
+theme_override_font_sizes/font_size = 48
+text = "CastleName"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Atlas"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CastleDescription" type="TextEdit" parent="TabContainer/Atlas/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Heirhein is a duchy within the Kingdom of Agustria, ruled by House Heirhein. Located in the western part of the kingdom, the duchy is known for its rugged, mountainous terrain and rich mineral deposits. The people of Heirhein are renowned for their resourcefulness, tenacity, and skill in craftsmanship, particularly in metalworking and mining.
+House Heirhein has built its reputation on its military might and its ability to exploit the natural resources of its lands. The family's wealth and influence have grown steadily over the years, thanks in large part to the profitable mines and forges that dot the duchy. The knights of Heirhein are known for their exceptional armor and weapons, crafted from the finest metals and imbued with the strength and durability of the mountains themselves.
+The castle of Heirhein is an imposing structure, built into the side of a mountain and overlooking the surrounding valleys. Its thick walls and strategic location make it a formidable fortress, capable of withstanding even the most determined assaults. Within the castle, the halls are adorned with the trophies of House Heirhein's military victories, from captured enemy banners to the armor and weapons of fallen foes. Despite the martial atmosphere, the Heirhein family is also known for their shrewd political maneuvering and their ability to forge alliances with other noble houses, both within Agustria and beyond its borders. As a result, House Heirhein has become a powerful force within the kingdom, with its influence extending far beyond the mountains of its duchy."
+wrap_mode = 1
+scroll_smooth = true
+script = ExtResource("4_vr0da")
+
+[node name="EditButton" type="CheckButton" parent="TabContainer/Atlas"]
+layout_mode = 2
+text = "Edit"
+icon = ExtResource("5_1dp83")
+
+[connection signal="toggled" from="TabContainer/Atlas/EditButton" to="TabContainer/Atlas/ScrollContainer/CastleDescription" method="_on_edit_button_toggled"]

@@ -1,0 +1,16 @@
+{
+  "country": "Grannvale",
+  "description": "Edda is one of the six duchies of the Kingdom of Grannvale, located in the central region of the continent of Jugdral. Unlike the other duchies, Edda is known for its strong religious influence and its close ties to the Church of Grannvale.The duchy is home to the renowned Edda Temple, which serves as the spiritual heart of Grannvale and is the seat of the Archbishop of the Church. The temple is a magnificent structure, known for its grand architecture, beautiful gardens, and serene atmosphere. It is a place of pilgrimage for the faithful from all over Jugdral, who come to seek guidance, healing, and spiritual enlightenment.The people of Edda are known for their deep faith, compassion, and wisdom. Many of Grannvale's most respected clerics, priests, and bishops hail from Edda, and the duchy is renowned for its exceptional healers and practitioners of light magic.Edda is ruled by House Edda, a noble family that has close ties to the Church and is known for its piety and devotion. The rulers of Edda often serve as trusted advisors to the King of Grannvale and play a significant role in shaping the spiritual and moral guidance of the kingdom.",
+  "faction": "neutral",
+  "name": "Edda",
+  "neighbors": {
+    "down": "Chalphy",
+    "left": "Dozel",
+    "right": "Melgen",
+    "up": "Belhalla"
+  },
+  "tile": {
+    "x": 189,
+    "y": 130
+  }
+}

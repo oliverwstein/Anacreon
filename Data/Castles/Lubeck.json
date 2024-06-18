@@ -1,0 +1,16 @@
+{
+  "country": "Silesia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Lubeck",
+  "neighbors": {
+    "down": "Phinora",
+    "left": "Zaxon",
+    "right": "Yied",
+    "up": "Tirnanog"
+  },
+  "tile": {
+    "x": 223,
+    "y": 58
+  }
+}

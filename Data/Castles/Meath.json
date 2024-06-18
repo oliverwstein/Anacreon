@@ -1,0 +1,16 @@
+{
+  "country": "Thracia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Meath",
+  "neighbors": {
+    "down": "Kapathogia",
+    "left": "Alster",
+    "right": "Manster",
+    "up": "Manster"
+  },
+  "tile": {
+    "x": 317,
+    "y": 149
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "country": "Thracia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Luthecia",
+  "neighbors": {
+    "down": "Grutia",
+    "left": "Melgen",
+    "right": "Kapathogia",
+    "up": "Melgen"
+  },
+  "tile": {
+    "x": 275,
+    "y": 174
+  }
+}

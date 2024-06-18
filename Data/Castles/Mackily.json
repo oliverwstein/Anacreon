@@ -1,0 +1,16 @@
+{
+  "country": "Augusty",
+  "description": "",
+  "faction": "neutral",
+  "name": "Mackily",
+  "neighbors": {
+    "down": "Nodion",
+    "left": "Heirhein",
+    "right": "Augusty",
+    "up": "Augusty"
+  },
+  "tile": {
+    "x": 93,
+    "y": 117
+  }
+}

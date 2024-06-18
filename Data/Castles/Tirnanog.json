@@ -1,0 +1,16 @@
+{
+  "country": "Isaach",
+  "description": "",
+  "faction": "neutral",
+  "name": "Tirnanog",
+  "neighbors": {
+    "down": "Sophara",
+    "left": "Lubeck",
+    "right": "Ganeishire",
+    "up": ""
+  },
+  "tile": {
+    "x": 269,
+    "y": 18
+  }
+}

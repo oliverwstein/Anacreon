@@ -1,0 +1,16 @@
+{
+  "country": "Grannvale",
+  "description": "Belhalla is the capital city of the Kingdom of Grannvale, located in the heart of the continent of Jugdral. It is a magnificent and sprawling city, known for its grand architecture, rich history, and political importance.The city is home to the royal family of Grannvale, who reside in the impressive Belhalla Castle. This castle is not only a symbol of the kingdom's power and wealth but also serves as the center of government and diplomacy for the entire continent. The castle is surrounded by beautiful gardens, courtyards, and fountains, adding to the grandeur of the capital.Belhalla is also a hub of commerce and culture, attracting merchants, artisans, and scholars from all over Jugdral. The city boasts numerous markets, guilds, and academies, fostering a vibrant and diverse community. The Royal Academy of Belhalla is particularly renowned for its exceptional education in magic, history, and statecraft.As the seat of power in Grannvale, Belhalla is often the stage for significant political events and ceremonies, such as coronations, treaties, and diplomatic receptions. The city's importance extends beyond Grannvale, as the decisions made within its walls can have far-reaching consequences for all of Jugdral.",
+  "faction": "neutral",
+  "name": "Belhalla",
+  "neighbors": {
+	"down": "Dozel",
+	"left": "Freege",
+	"right": "Edda",
+	"up": "Velthome"
+  },
+  "tile": {
+	"x": 171,
+	"y": 109
+  }
+}

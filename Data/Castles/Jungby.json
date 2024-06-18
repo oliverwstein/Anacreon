@@ -1,0 +1,16 @@
+{
+  "country": "Grannvale",
+  "description": "Jungby is one of the six duchies of the Kingdom of Grannvale, situated in the southeastern region of the continent of Jugdral. The duchy is renowned for its picturesque coastal landscapes, thriving ports, and rich maritime culture.The people of Jungby are known for their skill in seafaring, fishing, and coastal trade. The duchy's strategic location along the eastern coast of Jugdral has made it an important center for commerce and naval activities. Jungby's ships are well-respected across the continent for their craftsmanship and seaworthiness.Jungby is ruled by House Yngvi, a noble family descended from the crusader Ulir, one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Ulir's holy weapon, the legendary bow Yewfelle, is passed down through the generations of House Yngvi and is a symbol of their divine lineage and mastery over archery.The duchy is also famous for its skilled archers, who are renowned throughout Grannvale for their precision and prowess in battle. Jungby's archers have played crucial roles in defending the kingdom and maintaining peace in the region.",
+  "faction": "ally",
+  "name": "Jungby",
+  "neighbors": {
+    "down": "Genoa",
+    "left": "Evans",
+    "right": "Chalphy",
+    "up": ""
+  },
+  "tile": {
+    "x": 135,
+    "y": 157
+  }
+}

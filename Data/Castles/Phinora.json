@@ -1,0 +1,16 @@
+{
+  "country": "Yied",
+  "description": "",
+  "faction": "neutral",
+  "name": "Phinora",
+  "neighbors": {
+    "down": "Velthome",
+    "left": "Zaxon",
+    "right": "Yied",
+    "up": "Lubeck"
+  },
+  "tile": {
+    "x": 210,
+    "y": 76
+  }
+}

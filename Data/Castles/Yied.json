@@ -1,0 +1,16 @@
+{
+  "country": "Yied",
+  "description": "",
+  "faction": "neutral",
+  "name": "Yied",
+  "neighbors": {
+    "down": "Darna",
+    "left": "Phinora",
+    "right": "Rivough",
+    "up": "Lubeck"
+  },
+  "tile": {
+    "x": 252,
+    "y": 76
+  }
+}

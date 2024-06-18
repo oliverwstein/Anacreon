@@ -1,0 +1,16 @@
+{
+  "country": "Munster",
+  "description": "",
+  "faction": "neutral",
+  "name": "Melgen",
+  "neighbors": {
+    "down": "Peruluke",
+    "left": "Edda",
+    "right": "Alster",
+    "up": "Darna"
+  },
+  "tile": {
+    "x": 249,
+    "y": 130
+  }
+}

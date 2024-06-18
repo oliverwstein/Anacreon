@@ -1,0 +1,16 @@
+{
+  "country": "Augusty",
+  "description": "",
+  "faction": "neutral",
+  "name": "Madino",
+  "neighbors": {
+    "down": "Augusty",
+    "left": "Silvali",
+    "right": "Sailane",
+    "up": "Orgahill"
+  },
+  "tile": {
+    "x": 108,
+    "y": 64
+  }
+}

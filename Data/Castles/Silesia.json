@@ -1,0 +1,16 @@
+{
+  "country": "Silesia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Silesia",
+  "neighbors": {
+    "down": "Phinora",
+    "left": "Sailane",
+    "right": "Zaxon",
+    "up": "Sailane"
+  },
+  "tile": {
+    "x": 159,
+    "y": 78
+  }
+}

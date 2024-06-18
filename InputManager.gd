@@ -10,7 +10,6 @@ func pop_scene():
 	if menu_stack.is_empty():
 		return
 	var current_scene = menu_stack.pop_back()
-	current_scene.queue_free()  # or just hide it based on your use case
 
 func _input(event):
 	if menu_stack.size() > 0:

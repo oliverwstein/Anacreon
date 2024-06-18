@@ -1,0 +1,16 @@
+{
+  "country": "Isaach",
+  "description": "",
+  "faction": "neutral",
+  "name": "Rivough",
+  "neighbors": {
+    "down": "",
+    "left": "Yied",
+    "right": "Isaach",
+    "up": "Sophara"
+  },
+  "tile": {
+    "x": 290,
+    "y": 74
+  }
+}

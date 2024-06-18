@@ -1,0 +1,16 @@
+{
+  "country": "",
+  "description": "",
+  "faction": "neutral",
+  "name": "Orgahill",
+  "neighbors": {
+    "down": "Madino",
+    "left": "",
+    "right": "Sailane",
+    "up": ""
+  },
+  "tile": {
+    "x": 119,
+    "y": 38
+  }
+}

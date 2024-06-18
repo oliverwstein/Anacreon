@@ -29,4 +29,3 @@ func _ready():
 		
 func _on_selected_castle_changed(castle):
 	update(castle)
-	

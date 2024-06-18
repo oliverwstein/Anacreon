@@ -1,0 +1,16 @@
+{
+  "country": "Verdane",
+  "description": "",
+  "faction": "red",
+  "name": "Evans",
+  "neighbors": {
+    "down": "Genoa",
+    "left": "Verdane",
+    "right": "Jungby",
+    "up": "Nodion"
+  },
+  "tile": {
+    "x": 107,
+    "y": 147
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "country": "Grannvale",
+  "description": "Freege is one of the six duchies of the Kingdom of Grannvale, located in the northeastern region of the continent of Jugdral. The duchy is known for its rugged, mountainous terrain, rich mineral deposits, and advanced magical technology.The people of Freege are renowned for their exceptional magical abilities and their mastery over thunder magic. The duchy is home to some of the most prestigious magic academies in Jugdral, attracting students and scholars from all over the continent. Freege's mages and sages are highly sought after for their knowledge and skills in both magical research and warfare.Freege is ruled by House Freege, a noble family descended from the crusader Tordo, one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Tordo's holy weapon, the legendary tome Mjölnir, is passed down through the generations of House Freege and is a symbol of their divine lineage and mastery over thunder magic.The duchy is also known for its innovative magical technology, such as the powerful Thunder Rods, which harness the power of thunder magic for various purposes, including defense and industry. Freege's technological advancements have made it a formidable force within Grannvale and have contributed significantly to the kingdom's military strength.",
+  "faction": "neutral",
+  "name": "Freege",
+  "neighbors": {
+    "down": "Dozel",
+    "left": "Augusty",
+    "right": "Belhalla",
+    "up": ""
+  },
+  "tile": {
+    "x": 137,
+    "y": 107
+  }
+}

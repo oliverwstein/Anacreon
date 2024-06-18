@@ -1,0 +1,16 @@
+{
+  "country": "Grannvale",
+  "description": "Velthomer is one of the six duchies of the Kingdom of Grannvale, located in the southeastern region of the continent of Jugdral. The duchy is renowned for its arid, volcanic landscape, rich mineral deposits, and powerful fire magic.The people of Velthomer are known for their fiery temperament, passion, and mastery over fire magic. The duchy is home to the famous Velthomer Mage Academy, which is considered one of the most prestigious institutions for the study of fire magic in all of Jugdral. Velthomer's mages and sages are highly respected for their knowledge and skill in wielding the destructive power of fire.Velthomer is ruled by House Velthomer, a noble family descended from the crusader Fala, one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Fala's holy weapon, the legendary tome Valflame, is passed down through the generations of House Velthomer and is a symbol of their divine lineage and mastery over fire magic.The duchy's volcanic landscape has also shaped its economy, with mining and blacksmithing being important industries. Velthomer's master blacksmiths are renowned for their exceptional skill in crafting weapons and armor, often incorporating fire magic into their creations.",
+  "faction": "neutral",
+  "name": "Velthome",
+  "neighbors": {
+    "down": "Belhalla",
+    "left": "",
+    "right": "Phinora",
+    "up": "Phinora"
+  },
+  "tile": {
+    "x": 190,
+    "y": 91
+  }
+}

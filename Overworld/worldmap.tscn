@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://eymxu12i1d3d"]
+[gd_scene load_steps=23 format=3 uid="uid://eymxu12i1d3d"]
 
 [ext_resource type="Script" path="res://Overworld/worldmap.gd" id="1_ckc0l"]
 [ext_resource type="Script" path="res://Overworld/CastleManager.gd" id="3_nxqfp"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Overworld/CastleHUD.gd" id="9_x0ek2"]
 [ext_resource type="FontFile" uid="uid://cxwfwuol8kdr0" path="res://Assets/Fonts/Xolonium-Regular.ttf" id="10_aqrvb"]
 [ext_resource type="AudioStream" uid="uid://dmcpf1wf2hb3f" path="res://Audio/MainTheme.tres" id="15_uwnf5"]
+[ext_resource type="PackedScene" uid="uid://bsxgf6vaasmk7" path="res://Overworld/castle_page.tscn" id="16_rluf3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0"]
 texture = ExtResource("9_cr62s")
@@ -1024,7 +1025,6 @@ position = Vector2(888, 1912)
 up = NodePath("../Anphony")
 down = NodePath("../Nodion")
 right = NodePath("../Mackily")
-description = ""
 country = "Augusty"
 tile = Vector2i(55, 119)
 
@@ -1034,7 +1034,6 @@ up = NodePath("../Augusty")
 down = NodePath("../Nodion")
 left = NodePath("../Heirhein")
 right = NodePath("../Augusty")
-description = ""
 country = "Augusty"
 tile = Vector2i(93, 117)
 
@@ -1043,7 +1042,6 @@ position = Vector2(1000, 1464)
 up = NodePath("../Silvali")
 down = NodePath("../Heirhein")
 right = NodePath("../Augusty")
-description = ""
 country = "Augusty"
 tile = Vector2i(62, 91)
 
@@ -1053,7 +1051,6 @@ up = NodePath("../Madino")
 down = NodePath("../Anphony")
 left = NodePath("../Anphony")
 right = NodePath("../Augusty")
-description = ""
 country = "Augusty"
 tile = Vector2i(74, 77)
 
@@ -1063,7 +1060,6 @@ up = NodePath("../Orgahill")
 down = NodePath("../Augusty")
 left = NodePath("../Silvali")
 right = NodePath("../Sailane")
-description = ""
 country = "Augusty"
 tile = Vector2i(108, 64)
 
@@ -1071,8 +1067,6 @@ tile = Vector2i(108, 64)
 position = Vector2(1912, 616)
 down = NodePath("../Madino")
 right = NodePath("../Sailane")
-description = ""
-country = ""
 tile = Vector2i(119, 38)
 
 [node name="Miletos" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
@@ -1081,7 +1075,6 @@ up = NodePath("../Chalphy")
 down = NodePath("../Rado")
 left = NodePath("../Genoa")
 right = NodePath("../Chronos")
-description = ""
 country = "Miletos"
 tile = Vector2i(156, 166)
 
@@ -1091,7 +1084,6 @@ up = NodePath("../Edda")
 down = NodePath("../Chronos")
 left = NodePath("../Miletos")
 right = NodePath("../Melgen")
-description = ""
 country = "Miletos"
 tile = Vector2i(203, 173)
 
@@ -1100,7 +1092,6 @@ position = Vector2(2440, 3144)
 up = NodePath("../Miletos")
 left = NodePath("../Genoa")
 right = NodePath("../Chronos")
-description = ""
 country = "Miletos"
 tile = Vector2i(152, 196)
 
@@ -1109,7 +1100,6 @@ position = Vector2(2936, 3016)
 down = NodePath("../Rado")
 left = NodePath("../Miletos")
 right = NodePath("../Peruluke")
-description = ""
 country = "Miletos"
 tile = Vector2i(183, 188)
 
@@ -1119,7 +1109,6 @@ up = NodePath("../Conote")
 down = NodePath("../Meath")
 left = NodePath("../Alster")
 right = NodePath("../Conote")
-description = ""
 country = "Munster"
 tile = Vector2i(325, 120)
 
@@ -1129,7 +1118,6 @@ up = NodePath("../Darna")
 down = NodePath("../Peruluke")
 left = NodePath("../Edda")
 right = NodePath("../Alster")
-description = ""
 country = "Munster"
 tile = Vector2i(249, 130)
 
@@ -1139,7 +1127,6 @@ up = NodePath("../Lenster")
 down = NodePath("../Luthecia")
 left = NodePath("../Melgen")
 right = NodePath("../Manster")
-description = ""
 country = "Munster"
 tile = Vector2i(284, 128)
 
@@ -1148,7 +1135,6 @@ position = Vector2(4632, 1576)
 down = NodePath("../Alster")
 left = NodePath("../Melgen")
 right = NodePath("../Conote")
-description = ""
 country = "Munster"
 tile = Vector2i(289, 98)
 
@@ -1156,9 +1142,16 @@ tile = Vector2i(289, 98)
 position = Vector2(5288, 1608)
 down = NodePath("../Manster")
 left = NodePath("../Lenster")
-description = ""
 country = "Munster"
 tile = Vector2i(330, 100)
+
+[node name="Thracia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left") instance=ExtResource("4_7ktun")]
+position = Vector2(5080, 3016)
+up = NodePath("../Kapathogia")
+down = NodePath("../Grutia")
+left = NodePath("../Grutia")
+country = "Thracia"
+tile = Vector2i(317, 188)
 
 [node name="Meath" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(5080, 2392)
@@ -1166,18 +1159,8 @@ up = NodePath("../Manster")
 down = NodePath("../Kapathogia")
 left = NodePath("../Alster")
 right = NodePath("../Manster")
-description = ""
-country = "Munster"
-tile = Vector2i(317, 149)
-
-[node name="Thracia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left") instance=ExtResource("4_7ktun")]
-position = Vector2(5080, 3016)
-up = NodePath("../Kapathogia")
-down = NodePath("../Grutia")
-left = NodePath("../Grutia")
-description = ""
 country = "Thracia"
-tile = Vector2i(317, 188)
+tile = Vector2i(317, 149)
 
 [node name="Luthecia" parent="CastleManager" node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_7ktun")]
 position = Vector2(4408, 2792)
@@ -1185,7 +1168,6 @@ up = NodePath("../Melgen")
 down = NodePath("../Grutia")
 left = NodePath("../Melgen")
 right = NodePath("../Kapathogia")
-description = ""
 country = "Thracia"
 tile = Vector2i(275, 174)
 
@@ -1194,7 +1176,6 @@ position = Vector2(4536, 3224)
 up = NodePath("../Luthecia")
 left = NodePath("../Luthecia")
 right = NodePath("../Thracia")
-description = ""
 country = "Thracia"
 tile = Vector2i(283, 201)
 
@@ -1204,7 +1185,6 @@ up = NodePath("../Meath")
 down = NodePath("../Luthecia")
 left = NodePath("../Luthecia")
 right = NodePath("../Thracia")
-description = ""
 country = "Thracia"
 tile = Vector2i(297, 164)
 
@@ -1214,7 +1194,6 @@ up = NodePath("../Lubeck")
 down = NodePath("../Darna")
 left = NodePath("../Phinora")
 right = NodePath("../Rivough")
-description = ""
 country = "Yied"
 tile = Vector2i(252, 76)
 
@@ -1224,7 +1203,6 @@ up = NodePath("../Lubeck")
 down = NodePath("../Velthome")
 left = NodePath("../Zaxon")
 right = NodePath("../Yied")
-description = ""
 country = "Yied"
 tile = Vector2i(210, 76)
 
@@ -1234,7 +1212,6 @@ up = NodePath("../Yied")
 down = NodePath("../Melgen")
 left = NodePath("../Phinora")
 right = NodePath("../Rivough")
-description = ""
 country = "Yied"
 tile = Vector2i(247, 95)
 
@@ -1244,7 +1221,6 @@ up = NodePath("../Sailane")
 down = NodePath("../Phinora")
 left = NodePath("../Sailane")
 right = NodePath("../Zaxon")
-description = ""
 country = "Silesia"
 tile = Vector2i(159, 78)
 
@@ -1254,7 +1230,6 @@ up = NodePath("../Tirnanog")
 down = NodePath("../Phinora")
 left = NodePath("../Zaxon")
 right = NodePath("../Yied")
-description = ""
 country = "Silesia"
 tile = Vector2i(223, 58)
 
@@ -1264,7 +1239,6 @@ up = NodePath("../Throve")
 down = NodePath("../Phinora")
 left = NodePath("../Silesia")
 right = NodePath("../Lubeck")
-description = ""
 country = "Silesia"
 tile = Vector2i(190, 63)
 
@@ -1274,7 +1248,6 @@ up = NodePath("../Throve")
 down = NodePath("../Silesia")
 left = NodePath("../Madino")
 right = NodePath("../Throve")
-description = ""
 country = "Silesia"
 tile = Vector2i(136, 57)
 
@@ -1283,7 +1256,6 @@ position = Vector2(3048, 408)
 down = NodePath("../Zaxon")
 left = NodePath("../Sailane")
 right = NodePath("../Lubeck")
-description = ""
 country = "Silesia"
 tile = Vector2i(190, 25)
 
@@ -1292,7 +1264,6 @@ position = Vector2(1128, 2568)
 up = NodePath("../Nodion")
 down = NodePath("../Marpha")
 right = NodePath("../Evans")
-description = ""
 country = "Verdane"
 tile = Vector2i(70, 160)
 
@@ -1302,7 +1273,6 @@ up = NodePath("../Nodion")
 down = NodePath("../Genoa")
 left = NodePath("../Verdane")
 right = NodePath("../Jungby")
-description = ""
 country = "Verdane"
 tile = Vector2i(107, 147)
 faction = "red"
@@ -1313,7 +1283,6 @@ up = NodePath("../Jungby")
 down = NodePath("../Marpha")
 left = NodePath("../Evans")
 right = NodePath("../Miletos")
-description = ""
 country = "Verdane"
 tile = Vector2i(118, 176)
 
@@ -1322,7 +1291,6 @@ position = Vector2(1368, 2968)
 up = NodePath("../Evans")
 left = NodePath("../Verdane")
 right = NodePath("../Genoa")
-description = ""
 country = "Verdane"
 tile = Vector2i(85, 185)
 
@@ -1332,7 +1300,6 @@ up = NodePath("../Ganeishire")
 down = NodePath("../Rivough")
 left = NodePath("../Sophara")
 right = NodePath("../Ganeishire")
-description = ""
 country = "Isaach"
 tile = Vector2i(317, 66)
 
@@ -1341,7 +1308,6 @@ position = Vector2(4648, 1192)
 up = NodePath("../Sophara")
 left = NodePath("../Yied")
 right = NodePath("../Isaach")
-description = ""
 country = "Isaach"
 tile = Vector2i(290, 74)
 
@@ -1351,7 +1317,6 @@ up = NodePath("../Ganeishire")
 down = NodePath("../Rivough")
 left = NodePath("../Tirnanog")
 right = NodePath("../Isaach")
-description = ""
 country = "Isaach"
 tile = Vector2i(285, 49)
 
@@ -1360,7 +1325,6 @@ position = Vector2(4312, 296)
 down = NodePath("../Sophara")
 left = NodePath("../Lubeck")
 right = NodePath("../Ganeishire")
-description = ""
 country = "Isaach"
 tile = Vector2i(269, 18)
 
@@ -1369,7 +1333,6 @@ position = Vector2(5128, 472)
 up = NodePath("../Tirnanog")
 down = NodePath("../Isaach")
 left = NodePath("../Sophara")
-description = ""
 country = "Isaach"
 tile = Vector2i(320, 29)
 
@@ -1439,11 +1402,21 @@ label_settings = SubResource("LabelSettings_np3n8")
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
+[node name="CastlePage" parent="HUDLayer/CastleHUD" node_paths=PackedStringArray("castle") instance=ExtResource("16_rluf3")]
+layout_mode = 1
+offset_left = 400.0
+offset_top = 100.0
+offset_right = 400.0
+offset_bottom = 100.0
+castle = NodePath("../../../CastleManager/Chalphy")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_uwnf5")
 autoplay = true
 
 [connection signal="zoom_changed" from="." to="CastleManager" method="_on_zoom_changed"]
 [connection signal="zoom_changed" from="." to="Cursor/Sprite2D/Camera2D" method="_on_zoom_changed"]
+[connection signal="opened_castle" from="CastleManager" to="HUDLayer/CastleHUD/CastlePage" method="_on_open_castle"]
 [connection signal="selected_castle_changed" from="CastleManager" to="Cursor" method="_on_selected_castle_changed"]
 [connection signal="selected_castle_changed" from="CastleManager" to="HUDLayer/CastleHUD" method="_on_selected_castle_changed"]
+[connection signal="selected_castle_changed" from="CastleManager" to="HUDLayer/CastleHUD/CastlePage" method="_on_selected_castle_change"]

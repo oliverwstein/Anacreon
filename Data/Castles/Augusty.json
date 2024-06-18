@@ -1,0 +1,16 @@
+{
+  "country": "Augusty",
+  "description": "The capital of the dominion of Augusty, steeped in history and tradition, was founded by the legendary Crusader Hoðr. The kingdom is composed of a network of noble houses, each sworn to serve the royal family. However, a unique aspect of Agustria's power structure is that Hoðr's Holy Blood does not flow through the veins of the royal family, but instead through the members of House Nordion. This distinctive arrangement adds an intriguing layer of complexity to the political landscape of Agustria.House Nordion, bearers of Hoðr's Holy Blood, holds a special place within the kingdom. They are renowned for their elite force of Cross Knights, who serve under the banner of Nordion but pledge their ultimate loyalty to the king. This balance of power and allegiance has been a defining feature of Agustria's military and political structure, ensuring a level of checks and balances between the noble houses and the royal family.Throughout Agustria's history, several notable figures have emerged, leaving their mark on the kingdom's tapestry. King Chagall, a controversial ruler, has navigated the complex web of noble alliances and rivalries during his reign. Eldigan, a prominent member of House Nordion and a skilled warrior, has earned respect and admiration for his unwavering loyalty and sense of honor. His sister, Lachesis, is known for her beauty, grace, and devotion to her family and kingdom. ",
+  "faction": "neutral",
+  "name": "Augusty",
+  "neighbors": {
+    "down": "Mackily",
+    "left": "Silvali",
+    "right": "Freege",
+    "up": "Madino"
+  },
+  "tile": {
+    "x": 103,
+    "y": 93
+  }
+}

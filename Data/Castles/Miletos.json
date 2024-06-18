@@ -1,0 +1,16 @@
+{
+  "country": "Miletos",
+  "description": "",
+  "faction": "neutral",
+  "name": "Miletos",
+  "neighbors": {
+    "down": "Rado",
+    "left": "Genoa",
+    "right": "Chronos",
+    "up": "Chalphy"
+  },
+  "tile": {
+    "x": 156,
+    "y": 166
+  }
+}

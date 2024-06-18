@@ -1,0 +1,16 @@
+{
+  "country": "Augusty",
+  "description": "",
+  "faction": "neutral",
+  "name": "Anphony",
+  "neighbors": {
+    "down": "Heirhein",
+    "left": "",
+    "right": "Augusty",
+    "up": "Silvali"
+  },
+  "tile": {
+    "x": 62,
+    "y": 91
+  }
+}

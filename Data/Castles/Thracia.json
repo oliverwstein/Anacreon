@@ -1,0 +1,16 @@
+{
+  "country": "Thracia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Thracia",
+  "neighbors": {
+    "down": "Grutia",
+    "left": "Grutia",
+    "right": "",
+    "up": "Kapathogia"
+  },
+  "tile": {
+    "x": 317,
+    "y": 188
+  }
+}

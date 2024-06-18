@@ -1,0 +1,16 @@
+{
+  "country": "Grannvale",
+  "description": "Chalphy is one of the six duchies of the Kingdom of Grannvale, located in the southwestern region of the continent of Jugdral. The duchy is known for its lush green landscapes, fertile farmlands, and temperate climate, making it an ideal place for agriculture and livestock farming.The people of Chalphy are known for their strong sense of justice, loyalty, and chivalry. The duchy is ruled by House Chalphy, a noble family descended from the crusader Baldur, who was one of the Twelve Crusaders who fought against the dark god Loptous in ancient times. Baldur's holy weapon, the legendary sword Tyrfing, is passed down through the generations of House Chalphy and is a symbol of their divine lineage and righteous rule.Chalphy is also renowned for its skilled knights and cavalry, who are among the finest in all of Grannvale. The duchy's military prowess and strategic location have made it an important ally to the Kingdom of Grannvale, and the rulers of Chalphy have often played pivotal roles in shaping the history of Jugdral.",
+  "faction": "blue",
+  "name": "Chalphy",
+  "neighbors": {
+    "down": "Miletos",
+    "left": "Jungby",
+    "right": "Edda",
+    "up": "Dozel"
+  },
+  "tile": {
+    "x": 162,
+    "y": 144
+  }
+}

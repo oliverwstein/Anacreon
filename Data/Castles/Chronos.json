@@ -1,0 +1,16 @@
+{
+  "country": "Miletos",
+  "description": "",
+  "faction": "neutral",
+  "name": "Chronos",
+  "neighbors": {
+    "down": "Rado",
+    "left": "Miletos",
+    "right": "Peruluke",
+    "up": ""
+  },
+  "tile": {
+    "x": 183,
+    "y": 188
+  }
+}

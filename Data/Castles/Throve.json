@@ -1,0 +1,16 @@
+{
+  "country": "Silesia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Throve",
+  "neighbors": {
+    "down": "Zaxon",
+    "left": "Sailane",
+    "right": "Lubeck",
+    "up": ""
+  },
+  "tile": {
+    "x": 190,
+    "y": 25
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "country": "Silesia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Sailane",
+  "neighbors": {
+    "down": "Silesia",
+    "left": "Madino",
+    "right": "Throve",
+    "up": "Throve"
+  },
+  "tile": {
+    "x": 136,
+    "y": 57
+  }
+}

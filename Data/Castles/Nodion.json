@@ -1,0 +1,16 @@
+{
+  "country": "Augusty",
+  "description": "Nordion, also known as Nodion, is a duchy within the Kingdom of Agustria, and the seat of power for House Nordion. The duchy is located in the northern part of Agustria, known for its lush forests, rolling hills, and rich agricultural lands. The people of Nordion are known for their strong sense of honor, loyalty, and pride in their heritage, reflecting the values embodied by their ruling house.House Nordion, led by the descendants of the Crusader Hoðr, is one of the most respected and influential noble families in Agustria. The family is renowned for its exceptional warriors, particularly the elite Cross Knights, who serve as both the personal guard of House Nordion and as a symbol of the house's military prowess. The Cross Knights are admired throughout the kingdom for their skill, discipline, and unwavering allegiance to their lords and the king.The castle of Nordion stands as a testament to the house's strength and resilience. Its sturdy walls and towers have withstood countless battles and sieges, protecting the Nordion family and their subjects from threats both within and without the kingdom. Within the castle, the halls are adorned with tapestries and paintings depicting the heroic deeds of Nordion's ancestors, serving as a constant reminder of the family's proud lineage and the weight of their responsibilities. Despite the martial focus of House Nordion, the duchy is also known for its vibrant culture, with bards and poets often visiting the castle to entertain the nobility with tales of heroism and chivalry.",
+  "faction": "neutral",
+  "name": "Nodion",
+  "neighbors": {
+    "down": "Verdane",
+    "left": "Heirhein",
+    "right": "Evans",
+    "up": "Mackily"
+  },
+  "tile": {
+    "x": 75,
+    "y": 139
+  }
+}

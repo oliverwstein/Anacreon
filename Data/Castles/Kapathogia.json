@@ -1,0 +1,16 @@
+{
+  "country": "Thracia",
+  "description": "",
+  "faction": "neutral",
+  "name": "Kapathogia",
+  "neighbors": {
+    "down": "Luthecia",
+    "left": "Luthecia",
+    "right": "Thracia",
+    "up": "Meath"
+  },
+  "tile": {
+    "x": 297,
+    "y": 164
+  }
+}

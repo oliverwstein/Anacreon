@@ -1,0 +1,16 @@
+{
+  "country": "Miletos",
+  "description": "",
+  "faction": "neutral",
+  "name": "Peruluke",
+  "neighbors": {
+    "down": "Chronos",
+    "left": "Miletos",
+    "right": "Melgen",
+    "up": "Edda"
+  },
+  "tile": {
+    "x": 203,
+    "y": 173
+  }
+}

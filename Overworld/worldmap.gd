@@ -39,3 +39,9 @@ func _handle_input(event):
 			zoom *= 2
 		elif event.is_action("ui_zoom_out"):
 			zoom /= 2
+		elif event.is_action("ui_save"):
+			for castle in castleManager.get_children():
+				if castle is Castle:
+					castleManager.save_castle_to_json(castle)
+		elif event.is_action("ui_load"):
+			castleManager.load_all_castles()

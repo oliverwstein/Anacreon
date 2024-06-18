@@ -1,0 +1,16 @@
+{
+  "country": "Munster",
+  "description": "",
+  "faction": "neutral",
+  "name": "Lenster",
+  "neighbors": {
+    "down": "Alster",
+    "left": "Melgen",
+    "right": "Conote",
+    "up": ""
+  },
+  "tile": {
+    "x": 289,
+    "y": 98
+  }
+}
