@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://oc8ytj56sdun"]
+[gd_scene load_steps=4 format=3 uid="uid://oc8ytj56sdun"]
 
 [ext_resource type="TileSet" uid="uid://b36vx10dxwa4" path="res://Preprocessing/tile_set.tres" id="1_eidp3"]
+[ext_resource type="Shader" path="res://Preprocessing/tile_map_tester.gdshader" id="1_puuwa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ftvx"]
+shader = ExtResource("1_puuwa")
 
 [node name="tile_map" type="TileMap"]
+material = SubResource("ShaderMaterial_8ftvx")
 tile_set = ExtResource("1_eidp3")
 format = 2
 layer_0/name = "Tile Layer 1"
