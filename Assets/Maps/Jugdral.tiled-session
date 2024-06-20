@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "/Users/Alex/Development/Anacreon/Preprocessing/output_map.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -25,11 +25,11 @@
             "scaleInEditor": 1
         },
         "/Users/Alex/Development/Anacreon/Preprocessing/output_map.tmx": {
-            "scale": 0.1041,
-            "selectedLayer": -1,
+            "scale": 0.2509,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 3093.1796349663787,
-                "y": 1671.469740634006
+                "x": 3355.9186927062574,
+                "y": 1203.6667995217217
             }
         },
         "/Users/Alex/Development/Anacreon/Preprocessing/tileset.tsx": {
@@ -56,13 +56,14 @@
     "map.tileWidth": 16,
     "map.width": 384,
     "openFiles": [
+        "/Users/Alex/Development/Anacreon/Preprocessing/output_map.tmx"
     ],
     "project": "Jugdral.tiled-project",
     "recentFiles": [
+        "/Users/Alex/Development/Anacreon/Preprocessing/output_map.tmx",
         "/Users/Alex/Development/Anacreon/Preprocessing/JugdralTilemap.tmx",
         "/Users/Alex/Development/Anacreon/Preprocessing/JugdralTileset.tsx",
-        "/Users/Alex/Development/Moira_Clean/moira/assets/tiles/Ch0.tmx",
-        "/Users/Alex/Development/Anacreon/Preprocessing/output_map.tmx"
+        "/Users/Alex/Development/Moira_Clean/moira/assets/tiles/Ch0.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "tsx",

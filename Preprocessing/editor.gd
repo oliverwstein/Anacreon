@@ -60,26 +60,63 @@ func process_tileset(tileset: TileSet):
 		var texture_region = tile_source.get_tile_texture_region(tile_id_vec)
 		reference_dists[category] = get_color_distribution(image.get_region(tile_source.get_tile_texture_region(tile_id_vec)))
 
-	for id in range(0, tile_source.get_tiles_count()):
+	for id in range(0, 8):#tile_source.get_tiles_count()):
 		var tile_id_vec = tile_source.get_tile_id(id)
 		var texture_region = tile_source.get_tile_texture_region(tile_id_vec)
 		var tile_image = image.get_region(texture_region)
-		var category = _process_tile(tile_image, reference_dists)
-		#print(tile_id_vec, category)
-		tile_source.get_tile_data(tile_id_vec, 0).set_custom_data("tileType", category[0])
-		var frequency_matrix = find_pixel_frequencies(tile_image, reference_dists[category[0]])
-		var inclusion_matrix = initialize_inclusion_matrix(frequency_matrix)
-		prune_negative_values(frequency_matrix, inclusion_matrix)
-		var hull = find_largest_convex_hull_from_components(inclusion_matrix)
-		if hull != null:
-			tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, 1)
-			tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, 0, adjust_contour_points(hull))
+		#var category = _process_tile(tile_image, reference_dists)
+		print(tile_id_vec)
+		#tile_source.get_tile_data(tile_id_vec, 0).set_custom_data("tileType", category[0])
+		#var frequency_matrix = find_pixel_frequencies(tile_image, reference_dists[category[0]])
+		#var inclusion_matrix = initialize_inclusion_matrix(frequency_matrix)
+		#prune_negative_values(frequency_matrix, inclusion_matrix)
+		#var hull = find_largest_convex_hull_from_components(inclusion_matrix)
+		#if hull != null:
+			#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, 1)
+			#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, 0, adjust_contour_points(hull))
 			
-		#var polygon = adjust_contour_points(pavlidis_contour_tracing(inclusion_matrix))
-		#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, 1)
-		#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, 0, polygon)
+		var pixel_category_matrix = _process_tile_by_pixel(tile_image, reference_dists, true)
+		var regions = region_grower(pixel_category_matrix)
+		var polyCount = 0
+		var polygonsTotal = 0
+		for key in regions.keys():
+			for polygon in regions[key]:
+				polygonsTotal += 1
+		tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, polygonsTotal)
+		for key in regions.keys():
+			for region in regions[key]:
+				var polygon = adjust_contour_points(get_perimeter(region))
+				print(polygon)
+				tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, polyCount, polygon)
+				polyCount += 1
 		
-	
+		#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, polygonsTotal)
+		#for key in regions.keys():
+			#if len(regions[key]) > 0:
+				##print(key,", ", len(regions[key]))
+				#var pixels = 0
+				#for polygon in regions[key]:
+					##tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, polyCount, adjust_contour_points(polygon))
+					##print(polygon)
+					#polyCount += 1
+					#pixels += len(polygon)
+				#print("pixels, ", pixels)
+		
+
+		# Now, find connected regions and extract polygons
+		#var regions_data = group_pixels_into_regions(pixel_category_matrix)
+		#var polygons = extract_largest_regions(regions_data['region_sizes'], regions_data['region_categories'], regions_data['region_ids'], 3)
+#
+		## Each entry in polygons now contains the category, size, and points that form the boundary of the region
+		#var polygon_layer_count = 0
+		#for polygon in polygons:
+			#print("Polygon Category: ", polygon['category'])
+			#print("Polygon Points: ", polygon['points'])
+			#if len(polygon['points']) > 3:
+				#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(polygon_layer_count, 1)
+				#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(polygon_layer_count, 0, adjust_contour_points(polygon['points']))
+				#polygon_layer_count += 1
+		
 	return tileset
 
 func _process_tile(tileImage: Image, reference_dists: Dictionary):
@@ -92,7 +129,6 @@ func _process_tile(tileImage: Image, reference_dists: Dictionary):
 			best_match = ref
 			best_match_value = emd
 	return [best_match, best_match_value]
-	
 
 func get_color_distribution(image: Image):
 	# Dictionary to store color counts
@@ -212,57 +248,9 @@ func prune_negative_values(frequency_matrix, inclusion_matrix):
 					if can_remove_point(frequency_matrix, inclusion_matrix, i, j):
 						inclusion_matrix[i][j] = 0
 						changes = true
-
 func can_remove_point(frequency_matrix, inclusion_matrix, i, j):
 	# Additional checks can be added here to decide if removing a point is beneficial
 	return true  # Simplistic approach for now
-	
-func get_points_from_matrix(inclusion_matrix):
-	var points = PackedVector2Array()
-	for y in range(inclusion_matrix.size()):
-		for x in range(inclusion_matrix[y].size()):
-			if inclusion_matrix[y][x] == 1:
-				points.append(Vector2(x, y))
-	return points
-	
-func find_largest_convex_hull(inclusion_matrix):
-	var points = get_points_from_matrix(inclusion_matrix)
-	var hull = Geometry2D.convex_hull(points)
-	# Optionally, find convex hulls for all components if you have multiple disconnected components
-	# This would require segmenting the points by connectedness first, which is not covered here
-	return hull
-	
-func calculate_hull_area(hull: PackedVector2Array) -> float:
-	var area = 0.0
-	var n = hull.size()
-	for i in range(n):
-		var j = (i + 1) % n  # Wrap around to the first vertex
-		area += hull[i].x * hull[j].y - hull[j].x * hull[i].y
-	return abs(area) / 2.0
-	
-func find_largest_convex_hull_from_components(inclusion_matrix):
-	var points = get_points_from_matrix(inclusion_matrix)
-	var largest_hull = null
-	var max_area = -1.0
-	
-	# Assuming components were separated (if you handle multiple disconnected parts)
-	# var components = segment_into_components(points) # This needs implementation if needed
-	# for component in components:
-	#     var hull = Geometry.convex_hull(component)
-	#     var area = calculate_hull_area(hull)
-	#     if area > max_area:
-	#         max_area = area
-	#         largest_hull = hull
-	
-	# For single component scenario:
-	var hull = Geometry2D.convex_hull(points)
-	var area = calculate_hull_area(hull)
-	if area > max_area:
-		max_area = area
-		largest_hull = hull
-	
-	return largest_hull
-#
 func calculate_offsets(contour):
 	var min_x = float('inf')
 	var max_x = float('-inf')
@@ -279,7 +267,7 @@ func calculate_offsets(contour):
 	var height = max_y - min_y
 	
 	return Vector2(width / 2 + min_x, height / 2 + min_y)  # Return the offsets for x and y
-	
+
 func adjust_contour_points(contour):
 	var offsets = calculate_offsets(contour)
 	var offset_x = offsets[0]
@@ -291,3 +279,173 @@ func adjust_contour_points(contour):
 		adjusted_contour.append(adjusted_point)
 	
 	return adjusted_contour
+
+func get_pixel_panels(image: Image, span: int) -> Dictionary:
+	var panels = Dictionary()
+
+	# Iterate through each pixel in the image
+	for y in range(image.get_height()):
+		for x in range(image.get_width()):
+			# Calculate the sub-image bounds
+			var min_x = max(x - span, 0)
+			var max_x = min(x + span, image.get_width() - 1)
+			var min_y = max(y - span, 0)
+			var max_y = min(y + span, image.get_height() - 1)
+			
+			# Create a new sub-image for these bounds
+			var sub_image = image.get_region(Rect2(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1))
+			panels[Vector2(x, y)] = sub_image
+
+	return panels
+	
+func _process_tile_by_pixel(tileImage: Image, reference_dists: Dictionary, expanded: bool = false) -> Array:
+	var pixel_category_matrix = Array()
+	var panels = get_pixel_panels(tileImage, 2)
+	for y in range(tileImage.get_height()):
+		var row = []
+		for x in range(tileImage.get_width()):
+			var colorDist = get_color_distribution(panels[Vector2(x, y)])
+			var best_match_value = INF#6
+			var best_match = ""
+			var cell_dict = {}
+			for ref in reference_dists.keys():
+				var emd = calculate_emd(colorDist, reference_dists[ref])
+				cell_dict[ref] = emd
+				if emd < best_match_value:
+					best_match = ref
+					best_match_value = emd
+			if expanded:
+				row.append(cell_dict)
+			else:
+				row.append(best_match)
+		pixel_category_matrix.append(row)
+	return pixel_category_matrix
+
+func region_grower(pixel_matrix:Array) -> Dictionary: 
+	var regions = {}
+	var visited = []
+	visited.resize(pixel_matrix.size())
+	for row in pixel_matrix.size():
+		visited[row] = []
+		visited[row].resize(pixel_matrix.size())
+		visited[row].fill(false)
+	var directions = [
+		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
+	]
+	# Main loop
+	while true:
+		var seed = _find_seed(pixel_matrix, visited)
+		if seed == null:
+			break
+		var new_region = _grow_region(seed, pixel_matrix, visited, directions)
+		if new_region[0].size() >= 8:
+			if regions.get(new_region[1], false):
+				regions[new_region[1]].append(new_region[0])
+			else:
+				regions[new_region[1]] = [new_region[0]]
+	return regions
+
+func _find_seed(pixel_matrix, visited):
+	var min_distance = INF
+	var seed_point = null
+	
+	for x in pixel_matrix.size():
+		for y in pixel_matrix[x].size():
+			if visited[y][x] == false:
+				var distances = pixel_matrix[y][x] as Dictionary
+				for key in distances.keys():
+					if distances[key] < min_distance:
+						min_distance = distances[key]
+						seed_point = Vector2(x, y)
+	return seed_point
+
+func _grow_region(seed:Vector2, pixel_matrix:Array, visited:Array, directions:Array) -> Array:
+	var stack = []
+	var region = []
+	stack.push_back(seed)
+	var category = _best_category(pixel_matrix[seed.y][seed.x])
+	
+	while !stack.is_empty():
+		var point = stack.pop_back()
+		if visited[point.y][point.x] == false:
+			visited[point.y][point.x] = true
+			region.append(point)
+			for dir in directions:
+				var neighbor = point + dir
+				if is_valid_index(neighbor, pixel_matrix):
+					if visited[neighbor.y][neighbor.x] == false:
+						if _is_similar(point, neighbor, pixel_matrix):
+							stack.push_back(neighbor)
+	return [region, category]
+
+func _is_similar(point1:Vector2, point2:Vector2, pixel_matrix) -> bool:
+	var key1 = _best_category(pixel_matrix[point1.y][point1.x])
+	var key2 = _best_category(pixel_matrix[point2.y][point2.x])
+	return key1 == key2
+	
+func _best_category(cat_distances:Dictionary) -> String:
+	var min_distance = INF
+	var best_key = null
+	for key in cat_distances.keys():
+		if cat_distances[key] < min_distance:
+			min_distance = cat_distances[key]
+			best_key = key
+	return best_key
+				
+		
+func is_valid_index(index: Vector2, grid: Array) -> bool:
+	# Check if y is within the range of the grid's outer array
+	if index.y >= 0 and index.y < grid.size():
+		# Check if x is within the range of the inner array at the y-th position
+		if index.x >= 0 and index.x < grid[int(index.y)].size():
+			return true
+	return false
+
+
+
+func is_collinear(p1: Vector2, p2: Vector2, p3: Vector2) -> bool:
+	return (p3.y - p2.y) * (p2.x - p1.x) == (p2.y - p1.y) * (p3.x - p2.x)
+
+func _create_edge_map(tiles) -> Dictionary:
+	var edges = {}
+	var directions = [
+		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
+	]
+	for tile in tiles:
+		for dir in directions:
+			var neighbor = tile + dir
+			if neighbor not in tiles:
+				edges.merge(_create_edge(tile, dir))
+	return edges
+	
+func _create_edge(tile: Vector2, direction: Vector2):
+	if direction == Vector2(0, -1):  # Up
+		return {Vector2(tile.x, tile.y): Vector2(tile.x + 1, tile.y)}
+	elif direction == Vector2(0, 1):  # Down
+		return {Vector2(tile.x + 1, tile.y + 1): Vector2(tile.x, tile.y + 1)}
+	elif direction == Vector2(-1, 0):  # Left
+		return {Vector2(tile.x, tile.y + 1): Vector2(tile.x, tile.y)}
+	elif direction == Vector2(1, 0):  # Right
+		return {Vector2(tile.x + 1, tile.y): Vector2(tile.x + 1, tile.y + 1)}
+		
+func get_perimeter(tiles):
+	var edges = _create_edge_map(tiles)
+	var starting_point = edges.keys()[0] # It shouldn't matter which one this is.
+	var perimeter = [starting_point]
+	var current_point = edges[starting_point]
+	while current_point != starting_point:
+		if !is_collinear(perimeter.back(), current_point, edges[current_point]):
+			perimeter.append(current_point)
+			current_point = edges[current_point]
+		else:
+			current_point = edges[current_point]
+	if is_collinear(perimeter.back(), starting_point, edges[starting_point]):
+		perimeter.pop_front()
+		perimeter.append(perimeter[0])
+	else:
+		perimeter.append(current_point)
+	
+	return PackedVector2Array(perimeter)
+		
+	
+	
