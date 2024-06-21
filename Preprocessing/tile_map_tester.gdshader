@@ -27,7 +27,7 @@ void fragment() {
 
     // Time-based switch to cycle through hue, saturation, and value
     //int mode = int(mod(TIME / 3.0, 3.0)); // Every 3 seconds, switch mode
-	int mode = 0;
+	int mode = -1;
     // Determine display based on mode
     vec3 result_color;
     if (mode == 0) {

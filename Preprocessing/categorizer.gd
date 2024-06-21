@@ -1,6 +1,20 @@
 @tool
 extends EditorScript
 
+var reference_tiles = {
+		"wa_water": Vector2i(9, 3),
+		"fl_field": Vector2i(9,0),
+		"tr_tree": Vector2i(6, 3),
+		"mt_mountain": Vector2i(11, 11),
+		"hl_hill": Vector2i(15, 9),
+		"gc_grass_cliff": Vector2i(21, 17),
+		"dc_desert_cliff": Vector2i(4, 15),
+		"sa_sand": Vector2i(16, 0),
+		"rd_road": Vector2i(15, 5),
+		"vl_village": Vector2i(15, 6),
+		"cs_castle": Vector2i(16, 24)
+	}
+
 func _run():
 	print("Run!")
 	var scene_path = "res://Overworld/tile_map.tscn"  # Path to your scene file
@@ -41,8 +55,13 @@ func process_tileset(tileset: TileSet):
 	print(tile_source)
 	print("tile_count, ", tile_source.get_tiles_count())
 	var image = tile_source.get_texture().get_image() as Image
-
-	for id in range(0, 5):#tile_source.get_tiles_count()):
+	for key:String in reference_tiles.keys():
+		var ref_tile_id_vec = reference_tiles[key]
+		var texture_region = tile_source.get_tile_texture_region(ref_tile_id_vec)
+		var tile_image = image.get_region(texture_region)
+		reference_tiles[key] = get_colormap(get_image_pixel_array(tile_image))
+		
+	for id in range(0, tile_source.get_tiles_count()):
 		var tile_id_vec = tile_source.get_tile_id(id)
 		var texture_region = tile_source.get_tile_texture_region(tile_id_vec)
 		var tile_image = image.get_region(texture_region)
@@ -53,8 +72,32 @@ func process_tileset(tileset: TileSet):
 			for y in tile_image.get_height():
 				pixel_matrix.set_value(x, y, _hue_classifier(tile_image.get_pixelv(Vector2i(x, y)).h*360))
 		var region_matrix = region_grower(pixel_matrix, tile_image)
-		#pixel_matrix.display()
+		var region_dict = calc_region_dict(region_matrix)
+		#print("region_dict: ", region_dict)
+		for code in region_dict.keys():
+			var region_pixels = []
+			for pixel_vector in region_dict[code]:
+				region_pixels.append(tile_image.get_pixelv(pixel_vector))
+			var tile_category = categorize_pixel_array(region_pixels, reference_tiles)
+			region_matrix.replace(code, tile_category.split("_")[0])
 		region_matrix.display()
+		
+		#var packed_region_dict = {}
+		#for key in region_dict.keys():
+			#packed_region_dict[key] = get_perimeter(region_dict[key])
+		#var polyCount = 0
+		#var polygonsTotal = 0
+		#for key in packed_region_dict.keys():
+			#for polygon in packed_region_dict[key]:
+				#polygonsTotal += 1
+		#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygons_count(0, polygonsTotal)
+		#for key in packed_region_dict.keys():
+			#print("key: ", key)
+			#print("edges: ", packed_region_dict[key])
+			#var polygon = adjust_contour_points(packed_region_dict[key])
+			#tile_source.get_tile_data(tile_id_vec, 0).set_collision_polygon_points(0, polyCount, polygon)
+			#polyCount += 1
+			
 	return tileset
 
 func linearize(value: float) -> float:
@@ -165,6 +208,13 @@ class Matrix:
 			for row in range(rows):
 				list.append(get_value(row, col))
 		return list
+		
+	func replace(target_val: Variant, new_val: Variant):
+		for i in range(rows):
+			for j in range(cols):
+				if typeof(data[i][j]) == typeof(target_val):
+					if data[i][j] == target_val:
+						data[i][j] = new_val
 
 	func get_dimensions() -> Vector2:
 		return Vector2(rows, cols)
@@ -179,6 +229,16 @@ class Matrix:
 					frequencies[element] = 1
 		return frequencies
 	
+func get_image_pixel_array(image:Image) -> Array:
+	var pixel_array = []
+	var width = image.get_width()
+	var height = image.get_height()
+	# Iterate over each pixel in the image
+	for x in range(width):
+		for y in range(height):
+			pixel_array.append(image.get_pixel(x, y))
+	return pixel_array
+	
 func get_colormap(pixels:Array):
 	var color_distribution = {}
 	for p in pixels:
@@ -190,7 +250,18 @@ func get_colormap(pixels:Array):
 	var total = sum(color_distribution.values())
 	var normed_distribution = normalize_distribution(color_distribution, total)
 	return normed_distribution
-		
+	
+func categorize_pixel_array(pixel_array:Array, reference_dists: Dictionary) -> String:
+	var colorDist = get_colormap(pixel_array)
+	var best_match_value = INF
+	var best_match = "??"
+	for ref in reference_dists.keys():
+		var emd = calculate_emd(colorDist, reference_dists[ref])
+		if emd < best_match_value:
+			best_match = ref
+			best_match_value = emd
+	return best_match
+	
 static func sum(array):
 	var sum = 0.0
 	for element in array:
@@ -362,7 +433,16 @@ func consolidate_regions(region_matrix: Matrix):
 		# Recalculate the smallest size
 		region_sizes = region_matrix.calculate_frequencies()
 		
-
+func calc_region_dict(region_matrix: Matrix) -> Dictionary:
+	var region_dict = {}
+	for col in range(region_matrix.cols):
+		for row in range(region_matrix.rows):
+			if region_dict.has(region_matrix.get_value(row, col)):
+				region_dict[region_matrix.get_value(row, col)].append(Vector2(col, row))
+			else:
+				region_dict[region_matrix.get_value(row, col)] = [Vector2(col, row)]
+	return region_dict
+	
 func _find_seed(pixel_matrix:Matrix, visited:Matrix):
 	var unvisited_pixels = []
 	
@@ -424,3 +504,92 @@ func _is_valid_index(index: Vector2, grid: Matrix) -> bool:
 			return true
 	return false
 
+func is_collinear(p1: Vector2, p2: Vector2, p3: Vector2) -> bool:
+	return (p3.y - p2.y) * (p2.x - p1.x) == (p2.y - p1.y) * (p3.x - p2.x)
+
+func _create_edge_map(tiles) -> Dictionary:
+	var edges = {}
+	var directions = [
+		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
+	]
+	for tile in tiles:
+		for dir in directions:
+			var neighbor = tile + dir
+			if neighbor not in tiles:
+				edges.merge(_create_edge(tile, dir))
+	return edges
+	
+func _create_edge(tile: Vector2, direction: Vector2):
+	if direction == Vector2(0, -1):  # Up
+		return {Vector2(tile.x, tile.y): Vector2(tile.x + 1, tile.y)}
+	elif direction == Vector2(0, 1):  # Down
+		return {Vector2(tile.x + 1, tile.y + 1): Vector2(tile.x, tile.y + 1)}
+	elif direction == Vector2(-1, 0):  # Left
+		return {Vector2(tile.x, tile.y + 1): Vector2(tile.x, tile.y)}
+	elif direction == Vector2(1, 0):  # Right
+		return {Vector2(tile.x + 1, tile.y): Vector2(tile.x + 1, tile.y + 1)}
+		
+func get_perimeter(tiles) -> PackedVector2Array:
+	var edges = _create_edge_map(tiles)
+	var starting_point = edges.keys()[0] # It shouldn't matter which one this is.
+	var perimeter = [starting_point]
+	var current_point = edges[starting_point]
+	while current_point != starting_point:
+		if !is_collinear(perimeter.back(), current_point, edges[current_point]):
+			perimeter.append(current_point)
+			current_point = edges[current_point]
+		else:
+			current_point = edges[current_point]
+	if is_collinear(perimeter.back(), starting_point, edges[starting_point]):
+		perimeter.pop_front()
+		perimeter.append(perimeter[0])
+	else:
+		perimeter.append(current_point)
+	return PackedVector2Array(perimeter)
+	
+func calculate_area(perimeter: PackedVector2Array) -> float:
+	var area: float = 0.0
+	var n: int = perimeter.size()
+	if n < 3:
+		print("Not enough vertices to form a polygon.")
+		return 0.0
+
+	# Implementing the Shoelace formula
+	for i in range(n):
+		var j: int = (i + 1) % n  # Next vertex index, wraps around
+		var xi: float = perimeter[i].x
+		var yi: float = perimeter[i].y
+		var xj: float = perimeter[j].x
+		var yj: float = perimeter[j].y
+		area += xi * yj - yi * xj
+
+	return abs(area / 2.0)
+	
+func calculate_offsets(contour):
+	var min_x = float('inf')
+	var max_x = float('-inf')
+	var min_y = float('inf')
+	var max_y = float('-inf')
+	
+	for point in contour:
+		min_x = min(min_x, point.x)
+		max_x = max(max_x, point.x)
+		min_y = min(min_y, point.y)
+		max_y = max(max_y, point.y)
+	
+	var width = max_x - min_x
+	var height = max_y - min_y
+	
+	return Vector2(width / 2 + min_x, height / 2 + min_y)  # Return the offsets for x and y
+
+func adjust_contour_points(contour):
+	var offsets = calculate_offsets(contour)
+	var offset_x = offsets[0]
+	var offset_y = offsets[1]
+	
+	var adjusted_contour = PackedVector2Array()
+	for point in contour:
+		var adjusted_point = Vector2(point.x - offset_x, point.y - offset_y)
+		adjusted_contour.append(adjusted_point)
+	
+	return adjusted_contour
